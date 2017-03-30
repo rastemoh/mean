@@ -48,7 +48,7 @@ exports.update = function (req, res) {
 
   article.title = req.body.title;
   article.content = req.body.content;
-
+  article.keywords = req.body.keywords;
   article.save(function (err) {
     if (err) {
       return res.status(422).send({
