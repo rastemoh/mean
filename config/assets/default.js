@@ -25,7 +25,8 @@ module.exports = {
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
         'public/lib/ckeditor/ckeditor.js',
-        'public/lib/rr-ng-ckeditor/ng-ckeditor.js'
+        'public/lib/rr-ng-ckeditor/ng-ckeditor.js',
+        'public/lib/angular-utils-pagination/dirPagination.js'
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']

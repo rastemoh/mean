@@ -1,0 +1,30 @@
+<section>
+  <div class="page-header">
+    <h1>Files</h1>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <a class="btn btn-primary" ui-sref="uploadFile"><i class="glyphicon glyphicon-plus"></i> Upload new file</a>
+    </div>
+  </div>
+  <div class="media" ng-repeat="file in vm.files">
+    <div class="media-left">
+      <a href="{{file.url()}}" target="_blank">
+        <img class="media-object img-thumbnail img-responsive image-in-media-list" ng-src="{{file.url()}}" alt="">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading" ng-if="file.title" ng-bind="file.title"></h4>
+      Uploaded on
+      <span ng-bind="file.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="file.user" ng-bind="file.user.displayName"></span>
+      <span ng-if="!file.user">Deleted User</span>
+      <br/>
+      for using this file copy this link: <a href="{{file.url()}}" target="_blank">{{file.url()}}</a>
+      <br/>
+      Size: {{file.size/1000 | currency:'':0}} KB -
+      <button class="btn btn-link" ng-click="vm.remove(file)"><i class="glyphicon glyphicon-trash"></i>Remove</button>
+    </div>
+  </div>
+</section>

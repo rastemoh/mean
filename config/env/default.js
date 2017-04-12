@@ -53,6 +53,14 @@ module.exports = {
           fileSize: 1 * 1024 * 1024 // Max file size in bytes (1 MB)
         }
       }
+    },
+    siteFiles: {
+      image: {
+        dest: './uploads/',
+        limits: {
+          fileSize: 1 * 1024 * 1024
+        }
+      }
     }
   },
   shared: {

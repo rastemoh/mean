@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('articles')
+    .module('pages')
     .run(menuConfig);
 
   menuConfig.$inject = ['menuService'];
