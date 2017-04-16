@@ -71,9 +71,7 @@
     "socket.io": "^1.7.3",
     "validator": "~7.0.0",
     "winston": "^2.3.1",
-    "wiredep": "~4.0.0"
-  },
-  "devDependencies": {
+    "wiredep": "~4.0.0",
     "coveralls": "~2.13.0",
     "del": "^2.2.2",
     "eslint": "~2.2.0",
@@ -115,5 +113,7 @@
     "semver": "~5.3.0",
     "should": "~11.2.1",
     "supertest": "~2.0.0"
+  },
+  "devDependencies": {
   }
 }
