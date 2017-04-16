@@ -10,7 +10,7 @@
 
   function menuConfig(Menus) {
     Menus.addSubMenuItem('topbar', 'admin', {
-      title: 'Manage Pages',
+      title: 'مدیریت صفحات',
       state: 'admin.pages.list'
     });
   }

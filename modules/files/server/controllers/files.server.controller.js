@@ -126,7 +126,7 @@ exports.delete = function (req, res) {
  * List of Files
  */
 exports.list = function (req, res) {
-  File.find().sort('-created').populate('user', 'displayName').exec(function (err, articles) {
+  File.find().sort('-created').populate('user').exec(function (err, articles) {
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)
@@ -148,7 +148,7 @@ exports.fileByID = function (req, res, next, id) {
     });
   }
 
-  File.findById(id).populate('user', 'displayName').exec(function (err, file) {
+  File.findById(id).populate('user').exec(function (err, file) {
     if (err) {
       return next(err);
     } else if (!file) {

@@ -9,7 +9,8 @@ module.exports = {
         // bower:css
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-        'public/lib/angular-ui-notification/dist/angular-ui-notification.css'
+        'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
+        'public/lib/bs.rtl.v3.3.4/bootstrap-rtl.css'
         // endbower
       ],
       js: [
@@ -26,7 +27,9 @@ module.exports = {
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
         'public/lib/ckeditor/ckeditor.js',
         'public/lib/rr-ng-ckeditor/ng-ckeditor.js',
-        'public/lib/angular-utils-pagination/dirPagination.js'
+        'public/lib/angular-utils-pagination/dirPagination.js',
+        'public/lib/moment/moment.min.js',
+        'public/lib/moment/moment-jalaali.js'
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']

@@ -9,7 +9,7 @@
 
   function menuConfig(menuService) {
     menuService.addMenuItem('topbar', {
-      title: 'Pages',
+      title: 'صفحات',
       state: 'pages',
       type: 'dropdown',
       roles: ['*']
@@ -17,7 +17,7 @@
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'pages', {
-      title: 'List Pages',
+      title: 'لیست صفحات',
       state: 'pages.list',
       roles: ['*']
     });
