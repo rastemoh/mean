@@ -42,17 +42,16 @@
     vm.saveFile = function () {
       vm.newFile.createOrUpdate()
         .then(function () {
-          Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i>The file saved successfully!' });
+          Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i>فایل با موفقیت ذخیره شد!' });
         })
         .catch(function (result) {
-          Notification.error({ message: result.data.message, title: '<i class="glyphicon glyphicon-remove"></i> File save error!' });
+          Notification.error({ message: result.data.message, title: '<i class="glyphicon glyphicon-remove"></i> بروز خطا در ذخیره سازی فایل!' });
         });
     };
 
     vm.dismiss = function () {
       vm.fileUploaded = false;
       vm.newFile = {};
-      console.log('removing the file');
     };
   }
 }());

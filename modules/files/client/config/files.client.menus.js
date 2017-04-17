@@ -11,7 +11,7 @@
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'admin', {
-      title: 'Files',
+      title: 'فایلها',
       state: 'files.list'
     });
   }

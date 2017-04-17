@@ -1,17 +1,17 @@
 <section>
   <div class="page-header">
-    <h1>File Upload</h1>
-    <a ui-sref="files.list" class="btn btn-link">back to list</a>
+    <h1>آپلود فایل</h1>
+    <a ui-sref="files.list" class="btn btn-link">بازگشت به لیست</a>
   </div>
   <!-- Upload Pic Modal -->
   <form method="post" enctype="multipart/form-data">
     <div class="row">
       <div class="col-md-6">
-        <p>Please choose the file to be uploaded:</p>
+        <p>لطفا فایل مورد نظر را انتخاب کنید:</p>
         <!--picfile-->
         <div class="form-group">
           <button type="file" class="btn btn-default" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB"
-                  ngf-select="vm.uploadFile($file, $invalidFiles)">Select File
+                  ngf-select="vm.uploadFile($file, $invalidFiles)">انتخاب فایل
           </button>
           <span class="help-block">
                         {{errorMsg}}
@@ -24,14 +24,14 @@
           </div>
         </div>
         <div ng-show="vm.fileUploaded">
-          <p>Now click save to save the file</p>
+          <p>حال گزینه ذخیره را انتخاب کنید تا فایل ثبت شود</p>
           <div class="form-group">
-            <label class="control-label">File title <small>(you can provide a title for the file. it's not the filename!)</small></label>
+            <label class="control-label">عنوان فایل <small>(شما می توانید یک عنوان متناسب برای فایل انتخاب می کنید! این عنوان نام فایل نخواهد بود.)</small></label>
             <input type="text" class="form-control" ng-model="vm.newFile.title">
           </div>
-          <button type="button" class="btn btn-default" ng-click="vm.dismiss()">cancel</button>
+          <button type="button" class="btn btn-default" ng-click="vm.dismiss()">لغو</button>
           <button type="button" class="btn btn-primary" ng-click="vm.saveFile()">
-            <i class="fa fa-floppy-o"></i>save
+            <i class="fa fa-floppy-o"></i>ذخیره
           </button>
         </div>
       </div>
