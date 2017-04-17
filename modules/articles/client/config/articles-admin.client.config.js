@@ -10,7 +10,7 @@
 
   function menuConfig(Menus) {
     Menus.addSubMenuItem('topbar', 'admin', {
-      title: 'Manage Articles',
+      title: 'مدیریت مقالات',
       state: 'admin.articles.list'
     });
   }
