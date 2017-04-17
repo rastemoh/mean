@@ -18,32 +18,32 @@
   <div class="row">
     <div class="col-md-8">
       <div class="row">
-        <div class="col-md-3"><strong>First Name</strong></div>
+        <div class="col-md-3"><strong>نام</strong></div>
         <div class="col-md-6" ng-bind="vm.user.firstName"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3"><strong>Last Name</strong></div>
+        <div class="col-md-3"><strong>نام خانوادگی</strong></div>
         <div class="col-md-6" ng-bind="vm.user.lastName"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3"><strong>Email</strong></div>
+        <div class="col-md-3"><strong>ایمیل</strong></div>
         <div class="col-md-6" ng-bind="vm.user.email"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3"><strong>Provider</strong></div>
+        <div class="col-md-3"><strong>نوع حساب</strong></div>
         <div class="col-md-6" ng-bind="vm.user.provider"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3"><strong>Created</strong></div>
-        <div class="col-md-6" ng-bind="vm.user.created"></div>
+        <div class="col-md-3"><strong>ایجاد شده در</strong></div>
+        <div class="col-md-6" ng-bind="vm.user.created | datefa:'jD jMMMM jYYYY'"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3"><strong>Roles</strong></div>
+        <div class="col-md-3"><strong>نقشها</strong></div>
         <div class="col-md-6" ng-bind="vm.user.roles"></div>
       </div>
     </div>

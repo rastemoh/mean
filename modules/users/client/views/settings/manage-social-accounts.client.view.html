@@ -15,7 +15,7 @@
       </a>
     </div>
   </div>
-  <h3 class="col-md-12 text-center" ng-show="!vm.hasConnectedAdditionalSocialAccounts()">Unconnected social accounts:</h3>
+  <h3 class="col-md-12 text-center" ng-show="!vm.hasConnectedAdditionalSocialAccounts()">حسابهای اجتماعی متصل نشده:</h3>
   <div class="col-md-12 text-center">
     <div class="social-account-container" ng-hide="vm.isConnectedSocialAccount('facebook')">
       <a href="" ng-click="vm.callOauthProvider('/api/auth/facebook')">
