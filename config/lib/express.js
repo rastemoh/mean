@@ -19,6 +19,7 @@ var config = require('../config'),
   hbs = require('express-hbs'),
   path = require('path'),
   _ = require('lodash'),
+  i18n = require('i18n'),
   lusca = require('lusca');
 
 /**
@@ -89,6 +90,11 @@ module.exports.initMiddleware = function (app) {
   // Add the cookie parser and flash middleware
   app.use(cookieParser());
   app.use(flash());
+
+  i18n.configure({
+    directory: path.resolve('./locales'),
+    defaultLocale: 'fa'
+  });
 };
 
 /**

@@ -4,6 +4,7 @@
  * Module dependencies
  */
 var path = require('path'),
+  lang = require('i18n'),
   config = require(path.resolve('./config/config'));
 
 /**
@@ -55,7 +56,7 @@ exports.getErrorMessage = function (err) {
         message = 'Missing `newProfilePicture` field';
         break;
       default:
-        message = 'Something went wrong';
+        message = lang.__('Something went wrong');
     }
   } else if (err.message && !err.errors) {
     message = err.message;
