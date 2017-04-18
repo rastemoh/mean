@@ -34,7 +34,15 @@
         data: {
           pageTitle: 'Page {{ pageResolve.title }}'
         }
-      });
+      })
+    // custom pages routes follows
+      .state('main', {
+        url: '/main',
+        templateUrl: '/modules/pages/client/views/main-page.client.view.html',
+        controller: 'MainPageController',
+        controllerAs: 'vm'
+      })
+    ;
   }
 
   getPage.$inject = ['$stateParams', 'PagesService'];
