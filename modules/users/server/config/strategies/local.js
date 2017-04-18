@@ -26,7 +26,7 @@ module.exports = function () {
       }
       if (!user || !user.authenticate(password)) {
         return done(null, false, {
-          message: 'Invalid username or password (' + (new Date()).toLocaleTimeString() + ')'
+          message: 'نام کاربری یا رمز عبور اشتباه است. (' + (new Date()).toLocaleTimeString() + ')'
         });
       }
 

@@ -68,25 +68,25 @@
     function onUserSignupSuccess(response) {
       // If successful we assign the response to the global user model
       vm.authentication.user = response;
-      Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Signup successful!' });
+      Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> ثبت نام با موفقیت انجام شد!' });
       // And redirect to the previous or home page
       $state.go($state.previous.state.name || 'home', $state.previous.params);
     }
 
     function onUserSignupError(response) {
-      Notification.error({ message: response.data.message, title: '<i class="glyphicon glyphicon-remove"></i> Signup Error!', delay: 6000 });
+      Notification.error({ message: response.data.message, title: '<i class="glyphicon glyphicon-remove"></i> مشکل در ثبت نام!', delay: 6000 });
     }
 
     function onUserSigninSuccess(response) {
       // If successful we assign the response to the global user model
       vm.authentication.user = response;
-      Notification.info({ message: 'Welcome ' + response.firstName });
+      Notification.info({ message: 'خوش آمدید ' + response.firstName });
       // And redirect to the previous or home page
       $state.go($state.previous.state.name || 'home', $state.previous.params);
     }
 
     function onUserSigninError(response) {
-      Notification.error({ message: response.data.message, title: '<i class="glyphicon glyphicon-remove"></i> Signin Error!', delay: 6000 });
+      Notification.error({ message: response.data.message, title: '<i class="glyphicon glyphicon-remove"></i> مشکل در ورود!', delay: 6000 });
     }
   }
 }());
