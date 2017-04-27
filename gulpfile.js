@@ -17,6 +17,9 @@ var _ = require('lodash'),
       'gulp-angular-templatecache': 'templateCache'
     }
   }),
+  renameReg = require('gulp-regex-rename'),
+  replace = require('gulp-replace'),
+  argv = require('yargs').argv,
   pngquant = require('imagemin-pngquant'),
   wiredep = require('wiredep').stream,
   path = require('path'),
@@ -488,4 +491,12 @@ gulp.task('default', function (done) {
 // Run the project in production mode
 gulp.task('prod', function (done) {
   runSequence(['copyLocalEnvConfig', 'makeUploadsDir', 'templatecache'], 'build', 'env:prod', 'lint', ['nodemon-nodebug', 'watch'], done);
+});
+
+gulp.task('new-module', function (done) {
+  var moduleName = argv.name || 'unnamed';
+  gulp.src('./templates/modules/**')
+    .pipe(renameReg(/module_name/g,moduleName))//renames file names
+    .pipe(replace(/module_name/g,moduleName))//renames file contents
+    .pipe(gulp.dest('./modules'));
 });
