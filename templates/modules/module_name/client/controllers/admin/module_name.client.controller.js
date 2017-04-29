@@ -3,48 +3,48 @@
 
   angular
     .module('module_name.admin')
-    .controller('module_nameAdminController', module_nameAdminController);
+    .controller('Module_nameAdminController', Module_nameAdminController);
 
-  module_nameAdminController.$inject = ['$scope', '$state', '$window', 'articleResolve', 'Authentication', 'Notification'];
+  Module_nameAdminController.$inject = ['$scope', '$state', '$window', 'module_nameResolve', 'Authentication', 'Notification'];
 
-  function module_nameAdminController($scope, $state, $window, article, Authentication, Notification) {
+  function Module_nameAdminController($scope, $state, $window, item, Authentication, Notification) {
     var vm = this;
 
-    vm.article = article;
+    vm.item = item;
     vm.authentication = Authentication;
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
 
-    // Remove existing Article
+    // Remove existing Item
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {
-        vm.article.$remove(function() {
+        vm.item.$remove(function() {
           $state.go('admin.module_name.list');
-          Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Article deleted successfully!' });
+          Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Item deleted successfully!' });
         });
       }
     }
 
-    // Save Article
+    // Save Item
     function save(isValid) {
       if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'vm.form.articleForm');
+        $scope.$broadcast('show-errors-check-validity', 'vm.form.itemForm');
         return false;
       }
 
-      // Create a new article, or update the current instance
-      vm.article.createOrUpdate()
+      // Create a new item, or update the current instance
+      vm.item.createOrUpdate()
         .then(successCallback)
         .catch(errorCallback);
 
       function successCallback(res) {
-        $state.go('admin.module_name.list'); // should we send the User to the list or the updated Article's view?
-        Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Article saved successfully!' });
+        $state.go('admin.module_name.list'); // should we send the User to the list or the updated Item's view?
+        Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Item saved successfully!' });
       }
 
       function errorCallback(res) {
-        Notification.error({ message: res.data.message, title: '<i class="glyphicon glyphicon-remove"></i> Article save error!' });
+        Notification.error({ message: res.data.message, title: '<i class="glyphicon glyphicon-remove"></i> Item save error!' });
       }
     }
   }

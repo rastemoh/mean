@@ -3,13 +3,13 @@
 
   angular
     .module('module_name')
-    .controller('module_nameListController', module_nameListController);
+    .controller('module_nameListController', Module_nameListController);
 
-  module_nameListController.$inject = ['module_nameService'];
+  Module_nameListController.$inject = ['Module_nameService'];
 
-  function module_nameListController(module_nameService) {
+  function Module_nameListController(Module_nameService) {
     var vm = this;
 
-    vm.module_name = module_nameService.query();
+    vm.module_names = Module_nameService.query();
   }
 }());

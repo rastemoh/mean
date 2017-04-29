@@ -25,41 +25,41 @@
       })
       .state('admin.module_name.create', {
         url: '/create',
-        templateUrl: '/modules/module_name/client/views/admin/form-article.client.view.html',
-        controller: 'module_nameAdminController',
+        templateUrl: '/modules/module_name/client/views/admin/form-module_name.client.view.html',
+        controller: 'Module_nameAdminController',
         controllerAs: 'vm',
         data: {
           roles: ['admin']
         },
         resolve: {
-          articleResolve: newArticle
+          module_nameResolve: newItem
         }
       })
       .state('admin.module_name.edit', {
-        url: '/:articleId/edit',
-        templateUrl: '/modules/module_name/client/views/admin/form-article.client.view.html',
-        controller: 'module_nameAdminController',
+        url: '/:id/edit',
+        templateUrl: '/modules/module_name/client/views/admin/form-module_name.client.view.html',
+        controller: 'Module_nameAdminController',
         controllerAs: 'vm',
         data: {
           roles: ['admin']
         },
         resolve: {
-          articleResolve: getArticle
+          module_nameResolve: getItem
         }
       });
   }
 
-  getArticle.$inject = ['$stateParams', 'module_nameService'];
+  getItem.$inject = ['$stateParams', 'Module_nameService'];
 
-  function getArticle($stateParams, module_nameService) {
-    return module_nameService.get({
-      articleId: $stateParams.articleId
+  function getItem($stateParams, Module_nameService) {
+    return Module_nameService.get({
+      id: $stateParams.id
     }).$promise;
   }
 
-  newArticle.$inject = ['module_nameService'];
+  newItem.$inject = ['Module_nameService'];
 
-  function newArticle(module_nameService) {
-    return new module_nameService();
+  function newItem(Module_nameService) {
+    return new Module_nameService();
   }
 }());

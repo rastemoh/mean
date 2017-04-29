@@ -495,8 +495,10 @@ gulp.task('prod', function (done) {
 
 gulp.task('new-module', function (done) {
   var moduleName = argv.name || 'unnamed';
+  var upperFirst = moduleName.charAt(0).toUpperCase() + moduleName.slice(1);
   gulp.src('./templates/modules/**')
-    .pipe(renameReg(/module_name/g,moduleName))//renames file names
-    .pipe(replace(/module_name/g,moduleName))//renames file contents
+    .pipe(renameReg(/module_name/g, moduleName))// renames file names
+    .pipe(replace(/module_name/g, moduleName))// renames file contents
+    .pipe(replace(/Module_name/g, upperFirst))// renames file contents
     .pipe(gulp.dest('./modules'));
 });

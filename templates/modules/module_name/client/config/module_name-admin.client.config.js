@@ -10,7 +10,7 @@
 
   function menuConfig(Menus) {
     Menus.addSubMenuItem('topbar', 'admin', {
-      title: 'Manage module_name',
+      title: 'Manage Module_name',
       state: 'admin.module_name.list'
     });
   }

@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 /**
  * Article Schema
  */
-var module_namechema = new Schema({
+var Module_nameSchema = new Schema({
   created: {
     type: Date,
     default: Date.now
@@ -20,20 +20,10 @@ var module_namechema = new Schema({
     trim: true,
     required: 'Title cannot be blank'
   },
-  content: {
-    type: String,
-    default: '',
-    trim: true
-  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'
-  },
-  keywords: {
-    type: String,
-    default: '',
-    trim: true
   }
 });
 
-mongoose.model('Article', module_namechema);
+mongoose.model('Module_name', Module_nameSchema);

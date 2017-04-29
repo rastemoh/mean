@@ -3,37 +3,37 @@
 
   angular
     .module('module_name.services')
-    .factory('module_nameService', module_nameService);
+    .factory('Module_nameService', Module_nameService);
 
-  module_nameService.$inject = ['$resource', '$log'];
+  Module_nameService.$inject = ['$resource', '$log'];
 
-  function module_nameService($resource, $log) {
-    var Article = $resource('/api/module_name/:articleId', {
-      articleId: '@_id'
+  function Module_nameService($resource, $log) {
+    var Module_name = $resource('/api/module_name/:id', {
+      id: '@_id'
     }, {
       update: {
         method: 'PUT'
       }
     });
 
-    angular.extend(Article.prototype, {
+    angular.extend(Module_name.prototype, {
       createOrUpdate: function () {
-        var article = this;
-        return createOrUpdate(article);
+        var module_name = this;
+        return createOrUpdate(module_name);
       }
     });
 
-    return Article;
+    return Module_name;
 
-    function createOrUpdate(article) {
-      if (article._id) {
-        return article.$update(onSuccess, onError);
+    function createOrUpdate(module_name) {
+      if (module_name._id) {
+        return module_name.$update(onSuccess, onError);
       } else {
-        return article.$save(onSuccess, onError);
+        return module_name.$save(onSuccess, onError);
       }
 
       // Handle successful response
-      function onSuccess(article) {
+      function onSuccess(module_name) {
         // Any required internal processing from inside the service, goes here.
       }
 

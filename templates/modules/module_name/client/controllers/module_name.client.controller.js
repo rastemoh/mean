@@ -3,14 +3,14 @@
 
   angular
     .module('module_name')
-    .controller('module_nameController', module_nameController);
+    .controller('module_nameController', Module_nameController);
 
-  module_nameController.$inject = ['$scope', 'module_nameResolve', 'Authentication'];
+  Module_nameController.$inject = ['$scope', 'module_nameResolve', 'Authentication'];
 
-  function module_nameController($scope, module_name, Authentication) {
+  function Module_nameController($scope, module_name, Authentication) {
     var vm = this;
 
-    vm.article = module_name;
+    vm.item = module_name;
     vm.authentication = Authentication;
 
   }

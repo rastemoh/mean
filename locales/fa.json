@@ -1,4 +1,6 @@
 {
   "Hello": "سلام",
-  "Something went wrong": "مشکلی پیش آمد!"
+  "Something went wrong": "مشکلی پیش آمد!",
+  "Unexpected authorization error" : "مشکل غیر منتظره در بررسی سطوح دسترسی",
+  "User is not authorized" : "شما اجازه این کار را ندارید!"
 }

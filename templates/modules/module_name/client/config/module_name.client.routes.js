@@ -24,24 +24,24 @@
         }
       })
       .state('module_name.view', {
-        url: '/:articleId',
-        templateUrl: '/modules/module_name/client/views/view-article.client.view.html',
+        url: '/:id',
+        templateUrl: '/modules/module_name/client/views/view-module_name.client.view.html',
         controller: 'module_nameController',
         controllerAs: 'vm',
         resolve: {
-          articleResolve: getArticle
+          module_nameResolve: getModule_name
         },
         data: {
-          pageTitle: 'Article {{ articleResolve.title }}'
+          pageTitle: 'Module_name {{ module_nameResolve.title }}'
         }
       });
   }
 
-  getArticle.$inject = ['$stateParams', 'module_nameService'];
+  getModule_name.$inject = ['$stateParams', 'Module_nameService'];
 
-  function getArticle($stateParams, module_nameService) {
-    return module_nameService.get({
-      articleId: $stateParams.articleId
+  function getModule_name($stateParams, Module_nameService) {
+    return Module_nameService.get({
+      id: $stateParams.id
     }).$promise;
   }
 }());
