@@ -63,15 +63,15 @@ exports.update = function (req, res) {
  * Delete an item
  */
 exports.delete = function (req, res) {
-  var article = req.article;
+  var item = req.item;
 
-  article.remove(function (err) {
+  item.remove(function (err) {
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(article);
+      res.json(item);
     }
   });
 };
