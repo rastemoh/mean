@@ -5,9 +5,9 @@
     .module('news.admin')
     .controller('NewsAdminController', NewsAdminController);
 
-  NewsAdminController.$inject = ['$scope', '$state', '$window', 'newsResolve', 'Authentication', 'Notification'];
+  NewsAdminController.$inject = ['$scope', '$state', '$window', 'newsResolve', 'Authentication', 'Notification', '$uibModal'];
 
-  function NewsAdminController($scope, $state, $window, item, Authentication, Notification) {
+  function NewsAdminController($scope, $state, $window, item, Authentication, Notification, $uibModal) {
     var vm = this;
 
     vm.item = item;
@@ -15,6 +15,7 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    vm.showModal = showModal;
 
     // Remove existing Item
     function remove() {
@@ -33,6 +34,9 @@
         return false;
       }
 
+      if (vm.fileId) {
+        vm.item.fileId = vm.fileId;
+      }
       // Create a new item, or update the current instance
       vm.item.createOrUpdate()
         .then(successCallback)
@@ -46,6 +50,23 @@
       function errorCallback(res) {
         Notification.error({ message: res.data.message, title: '<i class="glyphicon glyphicon-remove"></i> Item save error!' });
       }
+    }
+
+    function showModal () {
+      var modalInstance = $uibModal.open({
+        controller: 'FilesUploadModalController',
+        templateUrl: '/modules/files/client/views/upload-modal.client.view.html',
+        controllerAs: 'vm',
+        bindings: {
+          title: 'Upload news main image',
+          module: 'news'
+        }
+      });
+      modalInstance.result
+        .then(function (data) {
+          vm.item.image = data.$value;
+          vm.fileId = data.$value._id;
+        });
     }
   }
 }());

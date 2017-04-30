@@ -10,6 +10,6 @@
   function NewsListController(NewsService) {
     var vm = this;
 
-    vm.newss = NewsService.query();
+    vm.news = NewsService.query();
   }
 }());

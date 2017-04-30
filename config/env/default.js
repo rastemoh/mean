@@ -61,6 +61,14 @@ module.exports = {
           fileSize: 1 * 1024 * 1024
         }
       }
+    },
+    newsFiles: {
+      image: {
+        dest: './modules/news/client/img/uploads/',
+        limits: {
+          fileSize: 1 * 1024 * 1024
+        }
+      }
     }
   },
   shared: {

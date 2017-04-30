@@ -6,6 +6,7 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   News = mongoose.model('News'),
+  File = mongoose.model('File'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
@@ -14,16 +15,33 @@ var path = require('path'),
 exports.create = function (req, res) {
   var item = new News(req.body);
   item.user = req.user;
+  console.log(req.body.fileId);
+  if (req.body.fileId) {
+    File.findById(req.body.fileId, function (err, file) {
+      if (err) {
+        return res.status(422).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        item.image = file;
+        saveNews();
+      }
+    });
+  } else {
+    saveNews();
+  }
 
-  item.save(function (err) {
-    if (err) {
-      return res.status(422).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.json(item);
-    }
-  });
+  function saveNews() {
+    item.save(function (err) {
+      if (err) {
+        return res.status(422).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        res.json(item);
+      }
+    });
+  }
 };
 
 /**
@@ -47,16 +65,34 @@ exports.update = function (req, res) {
   var item = req.item;
 
   item.title = req.body.title;
+  item.content = req.body.content;
+  item.summary = req.body.summary;
+  if (req.body.fileId) {
+    File.findById(req.body.fileId, function (err, file) {
+      if (err) {
+        return res.status(422).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        item.image = file;
+        saveNews();
+      }
+    });
+  } else {
+    saveNews();
+  }
   // extend with other features
-  item.save(function (err) {
-    if (err) {
-      return res.status(422).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.json(item);
-    }
-  });
+  function saveNews() {
+    item.save(function (err) {
+      if (err) {
+        return res.status(422).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        res.json(item);
+      }
+    });
+  }
 };
 
 /**
@@ -80,7 +116,7 @@ exports.delete = function (req, res) {
  * List of news
  */
 exports.list = function (req, res) {
-  News.find().sort('-created').populate('user', 'displayName').exec(function (err, news) {
+  News.find().sort('-created').populate('user', 'displayName').populate('image').exec(function (err, news) {
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)
@@ -102,7 +138,7 @@ exports.newsByID = function (req, res, next, id) {
     });
   }
 
-  News.findById(id).populate('user', 'displayName').exec(function (err, item) {
+  News.findById(id).populate('user', 'displayName').populate('image').exec(function (err, item) {
     if (err) {
       return next(err);
     } else if (!item) {

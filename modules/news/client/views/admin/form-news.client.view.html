@@ -8,6 +8,10 @@
     </a>
   </div>
   <div class="col-md-12">
+    <button type="button" class="btn btn-default" ng-click="vm.showModal()">Upload news main image</button>
+    <img class="img-thumbnail img-responsive image-in-media-list" ng-src="{{vm.item.image.url()}}" alt="" ng-show="vm.item.image">
+  </div>
+  <div class="col-md-12">
     <form name="vm.form.itemForm" class="form-horizontal" ng-submit="vm.save(vm.form.itemForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
@@ -16,6 +20,14 @@
           <div ng-messages="vm.form.itemForm.title.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Item title is required.</p>
           </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="summary">Summary</label>
+          <textarea name="summary" data-ng-model="vm.item.summary" id="summary" class="form-control" cols="30" rows="6" placeholder="Summary"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="content">Content</label>
+          <textarea name="content" ckeditor="vm.editorOptions" data-ng-model="vm.item.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-default">{{vm.item._id ? 'Update' : 'Create'}}</button>

@@ -33,24 +33,35 @@ exports.create = function (req, res) {
  * Upload a file
  */
 exports.upload = function (req, res) {
-
   // Filtering to upload only images
   var multerConfig = config.uploads.siteFiles.image;
   multerConfig.fileFilter = require(path.resolve('./config/lib/multer')).imageFileFilter;
   multerConfig.storage = require(path.resolve('./config/lib/multer')).storageFn;
   var upload = multer(multerConfig).single('file');
+  var dir = config.uploads.siteFiles.image.dest;
   uploadImage()
     .then(function () {
-      res.json({
-        'dir': config.uploads.siteFiles.image.dest,
-        'filename': req.file.filename,
-        'size': req.file.size,
-        'file-info': req.file
-      });
+      checkImageModule()
+        .then(function (dest) {
+          if (dest) {
+            dir = dest;
+          }
+          sendResponse();
+        })
+        .catch(sendResponse);
     })
     .catch(function (err) {
       res.status(422).send(err);
     });
+
+  function sendResponse() {
+    res.json({
+      'dir': dir,
+      'filename': req.file.filename,
+      'size': req.file.size,
+      'file-info': req.file
+    });
+  }
 
   function uploadImage() {
     return new Promise(function (resolve, reject) {
@@ -61,6 +72,23 @@ exports.upload = function (req, res) {
           resolve();
         }
       });
+    });
+  }
+
+  function checkImageModule() {
+    return new Promise(function (resolve, reject) {
+      if (req.body.module === 'news') {
+        fs.rename(config.uploads.siteFiles.image.dest + req.file.filename, config.uploads.newsFiles.image.dest + req.file.filename, function (err) {
+          if (err) {
+            console.log('error renaming file: ' + err);
+            reject();
+          } else {
+            resolve(config.uploads.newsFiles.image.dest);
+          }
+        });
+      } else {
+        resolve();
+      }
     });
   }
 };

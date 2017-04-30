@@ -48,6 +48,7 @@
 
       // Handle successful response
       function onSuccess(file) {
+        return file;
         // Any required internal processing from inside the service, goes here.
       }
 

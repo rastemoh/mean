@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 /**
- * Article Schema
+ * News Schema
  */
 var NewsSchema = new Schema({
   created: {
@@ -19,6 +19,20 @@ var NewsSchema = new Schema({
     default: '',
     trim: true,
     required: 'Title cannot be blank'
+  },
+  content: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  summary: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  image: {
+    type: Schema.ObjectId,
+    ref: 'File'
   },
   user: {
     type: Schema.ObjectId,

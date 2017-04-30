@@ -11,4 +11,7 @@
       <span ng-if="!vm.item.user">Deleted User</span>
     </em>
   </small>
+  <img class="img-responsive img-rounded" ng-src="{{vm.item.image.url()}}">
+  <p class="bs-callout bs-callout-default news-summary" ng-bind="vm.item.summary"></p>
+  <p class="lead" ng-bind-html="vm.trustHtml(vm.item.content)"></p>
 </section>

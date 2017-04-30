@@ -5,12 +5,34 @@
     .module('news.services')
     .factory('NewsService', NewsService);
 
-  NewsService.$inject = ['$resource', '$log'];
+  NewsService.$inject = ['$resource', '$log', 'FilesService'];
 
-  function NewsService($resource, $log) {
+  function NewsService($resource, $log, File) {
     var News = $resource('/api/news/:id', {
       id: '@_id'
     }, {
+      get: {
+        method: 'GET',
+        transformResponse: function(data) {
+          var news = new News();
+          angular.merge(news, angular.fromJson(data));
+          news.setImage();
+          return news;
+        }
+      },
+      query: {
+        method: 'GET',
+        isArray: true,
+        transformResponse: function (data) {
+          var array = angular.fromJson(data);
+          return array.map(function (item) {
+            var news = new News();
+            angular.merge(news, item);
+            news.setImage();
+            return news;
+          });
+        }
+      },
       update: {
         method: 'PUT'
       }
@@ -20,6 +42,13 @@
       createOrUpdate: function () {
         var news = this;
         return createOrUpdate(news);
+      },
+      setImage: function () {
+        if (this.image) {
+          var file = new File();
+          angular.merge(file, this.image);
+          this.image = file;
+        }
       }
     });
 

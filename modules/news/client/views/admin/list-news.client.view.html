@@ -1,14 +1,14 @@
 <section>
   <div class="page-header">
     <h1>
-      List of newss
+      List of news
       <a class="btn btn-primary pull-right" data-ui-sref="admin.news.create">
         <i class="glyphicon glyphicon-plus"></i>
       </a>
     </h1>
   </div>
   <div class="list-group">
-    <a data-ng-repeat="item in vm.newss" data-ui-sref="admin.news.edit({id: item._id})" class="list-group-item">
+    <a data-ng-repeat="item in vm.news" data-ui-sref="admin.news.edit({id: item._id})" class="list-group-item">
       <small class="list-group-item-text">
         Posted on
         <span data-ng-bind="item.created | date:'mediumDate'"></span>
@@ -17,9 +17,10 @@
         <span ng-if="!item.user">Deleted User</span>
       </small>
       <h4 class="list-group-item-heading" data-ng-bind="item.title"></h4>
+      <p class="list-group-item-text" ng-bind="item.summary"></p>
     </a>
   </div>
   <div class="alert alert-warning text-center" data-ng-if="vm.newss.$resolved && !vm.newss.length">
-    No newss yet, why don't you <a data-ui-sref="admin.news.create">create one</a>?
+    No news yet, why don't you <a data-ui-sref="admin.news.create">create one</a>?
   </div>
 </section>
