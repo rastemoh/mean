@@ -1,16 +1,12 @@
 (function () {
   'use strict';
 
-  angular
-    .module('files')
-    .controller('FilesUploadController', FilesUploadController);
+  angular.module('files')
+    .controller('FilesUploadModalController', fileUploaderModalController);
 
-  FilesUploadController.$inject = ['$scope', 'Upload', '$timeout', 'Authentication', 'FilesService', 'Notification'];
-
-  function FilesUploadController($scope, Upload, $timeout, Authentication, File, Notification) {
+  fileUploaderModalController.$inject = ['Upload', '$timeout', 'FilesService', 'Notification', '$scope'];
+  function fileUploaderModalController(Upload, $timeout, File, Notification, $scope) {
     var vm = this;
-    vm.authentication = Authentication;
-    vm.fileUploaded = false;
     vm.uploadFile = function (file, errFiles) {
       vm.f = file;
       vm.errFile = errFiles && errFiles[0];
@@ -23,14 +19,13 @@
         file.upload.then(function (response) {
           $timeout(function () {
             file.result = response.data;
-            console.log(response.data);
             vm.newFile = new File();
             vm.newFile.dir = response.data.dir;
             vm.newFile.filename = response.data.filename;
             vm.newFile.size = response.data.size;
-            vm.fileUploaded = true;
-          });
-        }, function (response) {// catch
+            this.fileUploaded = true;
+          }.bind(this));
+        }.bind(this), function (response) {// catch
           if (response.status > 0)
             this.errorMsg = response.status + ': ' + response.data;
         }.bind(this), function (evt) {// progress
@@ -41,18 +36,16 @@
 
     vm.saveFile = function () {
       vm.newFile.createOrUpdate()
-        .then(function () {
-          Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i>فایل با موفقیت ذخیره شد!' });
+        .then(function (file) {
+          Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i>The file saved successfully!' });
+          $scope.$close({ $value: file });
         })
         .catch(function (result) {
-          Notification.error({ message: result.data.message, title: '<i class="glyphicon glyphicon-remove"></i> بروز خطا در ذخیره سازی فایل!' });
+          Notification.error({
+            message: result.data.message,
+            title: '<i class="glyphicon glyphicon-remove"></i> File save error!'
+          });
         });
-    };
-
-    vm.dismiss = function () {
-      vm.fileUploaded = false;
-      vm.newFile = {};
-      console.log('to remove the file');
     };
   }
 }());

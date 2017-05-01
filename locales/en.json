@@ -1,4 +1,7 @@
 {
   "Hello": "Hello",
-  "Something went wrong": "Something went wrong"
+  "Something went wrong": "Something went wrong",
+  "Unexpected authorization error" : "Unexpected authorization error",
+  "User is not authorized" : "User is not authorized"
+
 }
