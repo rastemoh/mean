@@ -3,13 +3,14 @@
     <h1>{{vm.item._id ? 'Edit Item' : 'New Item'}}</h1>
   </div>
   <div class="pull-right">
+    <a ui-sref="admin.news.list" class="btn btn-primary">Back to list</a>
     <a ng-show="vm.item._id" class="btn btn-primary" ng-click="vm.remove()">
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
   <div class="col-md-12">
     <button type="button" class="btn btn-default" ng-click="vm.showModal()">Upload news main image</button>
-    <img class="img-thumbnail img-responsive image-in-media-list" ng-src="{{vm.item.image.url()}}" alt="" ng-show="vm.item.image">
+    <img class="img-thumbnail img-responsive" ng-src="{{vm.item.image.url()}}" alt="" ng-show="vm.item.image">
   </div>
   <div class="col-md-12">
     <form name="vm.form.itemForm" class="form-horizontal" ng-submit="vm.save(vm.form.itemForm.$valid)" novalidate>
@@ -30,7 +31,11 @@
           <textarea name="content" ckeditor="vm.editorOptions" data-ng-model="vm.item.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-default">{{vm.item._id ? 'Update' : 'Create'}}</button>
+          <label class="control-label" for="keywords">Keywords</label>
+          <input type="text" name="keywords" data-ng-model="vm.item.keywords" ng-list="-" id="keywords" class="form-control" placeholder="Keywords - sperated - by - '-'">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">{{vm.item._id ? 'Update' : 'Create'}}</button>
         </div>
       </fieldset>
     </form>

@@ -34,6 +34,10 @@ var NewsSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'File'
   },
+  keywords: [{
+    type: String,
+    trim: true
+  }],
   user: {
     type: Schema.ObjectId,
     ref: 'User'

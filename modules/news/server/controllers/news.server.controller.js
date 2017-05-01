@@ -67,6 +67,7 @@ exports.update = function (req, res) {
   item.title = req.body.title;
   item.content = req.body.content;
   item.summary = req.body.summary;
+  item.keywords = req.body.keywords;
   if (req.body.fileId) {
     File.findById(req.body.fileId, function (err, file) {
       if (err) {
