@@ -1,41 +1,41 @@
 <section>
   <div class="page-header">
-    <h1>{{vm.item._id ? 'Edit Item' : 'New Item'}}</h1>
+    <h1>{{vm.item._id ? 'ویرایش خبر' : 'خبر جدید'}}</h1>
   </div>
-  <div class="pull-right">
-    <a ui-sref="admin.news.list" class="btn btn-primary">Back to list</a>
+  <div class="pull-left">
+    <a ui-sref="admin.news.list" class="btn btn-primary">بازگشت به لیست</a>
     <a ng-show="vm.item._id" class="btn btn-primary" ng-click="vm.remove()">
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
   <div class="col-md-12">
-    <button type="button" class="btn btn-default" ng-click="vm.showModal()">Upload news main image</button>
+    <button type="button" class="btn btn-default" ng-click="vm.showModal()">آپلود تصویر اصلی خبر</button>
     <img class="img-thumbnail img-responsive" ng-src="{{vm.item.image.url()}}" alt="" ng-show="vm.item.image">
   </div>
   <div class="col-md-12">
     <form name="vm.form.itemForm" class="form-horizontal" ng-submit="vm.save(vm.form.itemForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
-          <label class="control-label" for="title">Title</label>
-          <input name="title" type="text" ng-model="vm.item.title" id="title" class="form-control" placeholder="Title" required autofocus>
+          <label class="control-label" for="title">عنوان خبر</label>
+          <input name="title" type="text" ng-model="vm.item.title" id="title" class="form-control" placeholder="عنوان" required autofocus>
           <div ng-messages="vm.form.itemForm.title.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Item title is required.</p>
+            <p class="help-block error-text" ng-message="required">عنوان خبر اجباری است</p>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label" for="summary">Summary</label>
-          <textarea name="summary" data-ng-model="vm.item.summary" id="summary" class="form-control" cols="30" rows="6" placeholder="Summary"></textarea>
+          <label class="control-label" for="summary">خلاصه</label>
+          <textarea name="summary" data-ng-model="vm.item.summary" id="summary" class="form-control" cols="30" rows="6" placeholder="خلاصه"></textarea>
         </div>
         <div class="form-group">
-          <label class="control-label" for="content">Content</label>
-          <textarea name="content" ckeditor="vm.editorOptions" data-ng-model="vm.item.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+          <label class="control-label" for="content">محتوا</label>
+          <textarea name="content" ckeditor="vm.editorOptions" data-ng-model="vm.item.content" id="content" class="form-control" cols="30" rows="10" placeholder="محتوا"></textarea>
         </div>
         <div class="form-group">
-          <label class="control-label" for="keywords">Keywords</label>
-          <input type="text" name="keywords" data-ng-model="vm.item.keywords" ng-list="-" id="keywords" class="form-control" placeholder="Keywords - sperated - by - '-'">
+          <label class="control-label" for="keywords">کلیدواژه ها</label>
+          <input type="text" name="keywords" data-ng-model="vm.item.keywords" ng-list="-" id="keywords" class="form-control" placeholder="کلیدواژه ها - را با - خط تیره (-) - از هم - جدا کنید">
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary">{{vm.item._id ? 'Update' : 'Create'}}</button>
+          <button type="submit" class="btn btn-primary">{{vm.item._id ? 'به روز رسانی' : 'ایجاد'}}</button>
         </div>
       </fieldset>
     </form>

@@ -1,17 +1,17 @@
 <!-- Upload Pic Modal -->
 <div class="modal-header">
   <button type="button" class="close" ng-click="$dismiss()">&times;</button>
-  <h4 class="modal-title" >Upload image</h4>
+  <h4 class="modal-title" >آپلود تصویر</h4>
 </div>
 <form method="post" enctype="multipart/form-data">
   <div class="modal-body">
     <div class="row">
       <div class="col-md-6">
-        <p>Please select the file</p>
+        <p>لطفا فایل مورد نظر را انتخاب کنید</p>
         <!--picfile-->
         <div class="form-group">
           <button type="file" class="btn btn-default"  accept="image/*" ngf-max-height="1000" ngf-max-size="1MB"
-                  ngf-select="vm.uploadFile($file, $invalidFiles)">Select</button>
+                  ngf-select="vm.uploadFile($file, $invalidFiles)">انتخاب</button>
           <span class="help-block">
                         {{errorMsg}}
                         <span>{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}</span>
@@ -30,9 +30,9 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-default" ng-click="$dismiss()" >Dismiss</button>
+      <button type="button" class="btn btn-default" ng-click="$dismiss()" >انصراف</button>
       <button type="button" class="btn btn-primary" ng-click="vm.saveFile()">
-        <i class="fa fa-floppy-o"></i>Save
+        <i class="fa fa-floppy-o"></i>ذخیره
       </button>
     </div>
   </div>

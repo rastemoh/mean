@@ -1,23 +1,23 @@
 <section>
   <div class="page-header">
-  <div class="pull-right">
-    <a class="btn btn-primary" ui-sref="news.list">Back to list</a>
+  <div class="pull-left">
+    <a class="btn btn-primary" ui-sref="news.list">بازگشت به لیست</a>
   </div>
     <h1 ng-bind="vm.item.title"></h1>
   </div>
   <small>
     <em class="text-muted">
-      Posted on
-      <span ng-bind="vm.item.created | date:'mediumDate'"></span>
-      by
+      ارسال شده در
+      <span ng-bind="vm.item.created | datefa:'jD jMMMM jYY'"></span>
+      توسط
       <span ng-if="vm.item.user" ng-bind="vm.item.user.displayName"></span>
-      <span ng-if="!vm.item.user">Deleted User</span>
+      <span ng-if="!vm.item.user">کاربر حذف شده</span>
     </em>
   </small>
   <img class="img-responsive img-rounded" ng-src="{{vm.item.image.url()}}">
   <p class="bs-callout bs-callout-default news-summary" ng-bind="vm.item.summary"></p>
   <p class="lead" ng-bind-html="vm.trustHtml(vm.item.content)"></p>
   <p class="bs-callout-default bs-callout" ng-if="vm.item.keywords">
-    Keywords: <span ng-repeat="keyword in vm.item.keywords">{{keyword}}<span ng-if="!$last"> - </span></span>
+    کلیدواژه ها: <span ng-repeat="keyword in vm.item.keywords">{{keyword}}<span ng-if="!$last"> - </span></span>
   </p>
 </section>

@@ -16,6 +16,9 @@
     vm.remove = remove;
     vm.save = save;
     vm.showModal = showModal;
+    vm.editorOptions = {
+      toolbar: 'Default'
+    };
 
     // Remove existing Item
     function remove() {

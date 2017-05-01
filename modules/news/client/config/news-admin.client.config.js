@@ -10,7 +10,7 @@
 
   function menuConfig(Menus) {
     Menus.addSubMenuItem('topbar', 'admin', {
-      title: 'Manage news',
+      title: 'مدیریت اخبار',
       state: 'admin.news.list'
     });
   }

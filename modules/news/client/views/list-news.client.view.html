@@ -1,10 +1,10 @@
 <section>
   <div class="page-header">
-    <h1>List of news</h1>
+    <h1>لیست اخبار</h1>
   </div>
   <dir-pagination-controls></dir-pagination-controls>
   <div class="row">
-    <div class="col-md-6" dir-paginate="item in vm.news |itemsPerPage: 10" ng-class="{'pull-left':$even,'pull-right':$odd}">
+    <div class="col-md-6" dir-paginate="item in vm.news |itemsPerPage: 10" ng-class="{'pull-right':$even,'pull-left':$odd}">
       <div class="thumbnail">
         <a ui-sref="news.view({ id: item._id })">
           <img class="img-responsive img-hover" ng-src="{{item.image.url()}}" alt="">
@@ -12,9 +12,9 @@
         <h3>
           <a ui-sref="news.view({ id: item._id })" ng-bind="item.title"></a>
           <small class="list-group-item-text">
-            Posted on
-            <span ng-bind="item.created | date:'mediumDate'"></span>
-            by
+            ارسال شده در
+            <span ng-bind="item.created | datefa:'jD jMMMM jYY'"></span>
+            توسط
             <span ng-if="item.user" ng-bind="item.user.displayName"></span>
             <span ng-if="!item.user">Deleted User</span>
           </small>
