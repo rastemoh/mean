@@ -1,0 +1,18 @@
+<section>
+  <div class="page-header">
+    <h1>
+      لیست افراد
+      <a class="btn btn-primary pull-left" data-ui-sref="admin.agPerson.create">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </h1>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="item in vm.people" data-ui-sref="admin.agPerson.edit({id: item._id})" class="list-group-item">
+      <h4 class="list-group-item-heading" data-ng-bind="item.fullName"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="vm.people.$resolved && !vm.people.length">
+    No people yet, why don't you <a data-ui-sref="admin.agPerson.create">create one</a>?
+  </div>
+</section>
