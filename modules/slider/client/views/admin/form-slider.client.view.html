@@ -3,10 +3,14 @@
     <h1>{{vm.item._id ? 'Edit Item' : 'New Item'}}</h1>
   </div>
   <div class="pull-right">
-    <a ui-sref="admin.module_name.list" class="btn btn-primary">Back to list</a>
+    <a ui-sref="admin.slider.list" class="btn btn-primary">Back to list</a>
     <a ng-show="vm.item._id" class="btn btn-primary" ng-click="vm.remove()">
       <i class="glyphicon glyphicon-trash"></i>
     </a>
+  </div>
+  <div class="col-md-12">
+    <button type="button" class="btn btn-default" ng-click="vm.showModal()">Upload slider image</button>
+    <img class="img-thumbnail img-responsive" ng-src="{{vm.item.image.url()}}" alt="" ng-show="vm.item.image">
   </div>
   <div class="col-md-12">
     <form name="vm.form.itemForm" class="form-horizontal" ng-submit="vm.save(vm.form.itemForm.$valid)" novalidate>
@@ -17,6 +21,10 @@
           <div ng-messages="vm.form.itemForm.title.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Item title is required.</p>
           </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="link">Link <small>(link to go through when clicked on slider image)</small></label>
+          <input name="link" type="text" ng-model="vm.item.link" id="link" class="form-control" placeholder="http://domain.com/files/slider-1.jpg" required autofocus>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-default">{{vm.item._id ? 'Update' : 'Create'}}</button>

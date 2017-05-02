@@ -1,12 +1,13 @@
 <section>
-  <div>
-    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-        <img ng-src="{{slide.image}}" style="margin:auto;">
-        <div class="carousel-caption">
-          <h4>Slide {{slide.id + 1}}</h4>
-          <p>{{slide.text}}</p>
-        </div>
+  <div style="height: 305px">
+    <div uib-carousel active="vm.active" interval="vm.interval" no-wrap="vm.noWrapSlides">
+      <div uib-slide ng-repeat="slide in vm.slides" index="$index">
+        <a ng-href="{{slide.link}}">
+          <img ng-src="{{slide.image.url()}}" style="margin:auto;">
+          <div class="carousel-caption">
+            <h4>{{slide.title}}</h4>
+          </div>
+        </a>
       </div>
     </div>
   </div>

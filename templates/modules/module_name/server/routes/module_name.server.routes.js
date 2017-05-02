@@ -13,11 +13,11 @@ module.exports = function (app) {
     .post(Module_name.create);
 
   // Single article routes
-  app.route('/api/module_name/:id').all(Module_namePolicy.isAllowed)
+  app.route('/api/module_name/:module_nameId').all(Module_namePolicy.isAllowed)
     .get(Module_name.read)
     .put(Module_name.update)
     .delete(Module_name.delete);
 
   // Finish by binding the article middleware
-  app.param('id', Module_name.module_nameByID);
+  app.param('module_nameId', Module_name.module_nameByID);
 };

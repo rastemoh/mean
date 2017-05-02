@@ -77,13 +77,14 @@ exports.upload = function (req, res) {
 
   function checkImageModule() {
     return new Promise(function (resolve, reject) {
-      if (req.body.module === 'news') {
-        fs.rename(config.uploads.siteFiles.image.dest + req.file.filename, config.uploads.newsFiles.image.dest + req.file.filename, function (err) {
+      if (req.body.module === 'news' || req.body.module === 'slider') {
+        var module = req.body.module;
+        fs.rename(config.uploads.siteFiles.image.dest + req.file.filename, config.uploads[module].image.dest + req.file.filename, function (err) {
           if (err) {
             console.log('error renaming file: ' + err);
             reject();
           } else {
-            resolve(config.uploads.newsFiles.image.dest);
+            resolve(config.uploads[module].image.dest);
           }
         });
       } else {
