@@ -1,8 +1,8 @@
 <section>
   <div class="page-header">
     <h1>
-      Slider Images
-      <a class="btn btn-primary pull-right" data-ui-sref="admin.slider.create">
+      تصاویر اسلایدر
+      <a class="btn btn-primary pull-left" data-ui-sref="admin.slider.create">
         <i class="glyphicon glyphicon-plus"></i>
       </a>
     </h1>
@@ -10,16 +10,16 @@
   <div class="list-group">
     <a data-ng-repeat="item in vm.slides" data-ui-sref="admin.slider.edit({id: item._id})" class="list-group-item">
       <small class="list-group-item-text">
-        Posted on
-        <span data-ng-bind="item.created | date:'mediumDate'"></span>
-        by
+        ایجاد شده در
+        <span data-ng-bind="item.created | datefa:'jD jMMMM jYYYY'"></span>
+        توسط
         <span ng-if="item.user" ng-bind="item.user.displayName"></span>
-        <span ng-if="!item.user">Deleted User</span>
+        <span ng-if="!item.user">کاربر حذف شده</span>
       </small>
       <h4 class="list-group-item-heading" data-ng-bind="item.title"></h4>
     </a>
   </div>
   <div class="alert alert-warning text-center" data-ng-if="vm.slides.$resolved && !vm.slides.length">
-    No slides yet, why don't you <a data-ui-sref="admin.slider.create">create one</a>?
+    هیچ اسلایدی وجود ندارد. شما می توانید <a data-ui-sref="admin.slider.create">ایجاد کنید</a>
   </div>
 </section>

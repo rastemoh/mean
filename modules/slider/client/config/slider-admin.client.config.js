@@ -10,7 +10,7 @@
 
   function menuConfig(Menus) {
     Menus.addSubMenuItem('topbar', 'admin', {
-      title: 'Manage Slider',
+      title: 'مدیریت اسلایدر',
       state: 'admin.slider.list'
     });
   }
