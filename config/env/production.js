@@ -13,6 +13,7 @@ module.exports = {
   // Binding to 127.0.0.1 is safer in production.
   host: process.env.HOST || '0.0.0.0',
   domain: 'http://rastemoh.ir',
+  sessionSecret: process.env.SESSION_SECRET || '6cbeaa03a726bb4ed7fca0c8a9a28632',
   db: {
     uri: process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean',
     options: {
