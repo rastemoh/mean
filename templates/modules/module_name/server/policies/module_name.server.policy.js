@@ -20,7 +20,7 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/module_name',
       permissions: '*'
     }, {
-      resources: '/api/module_name/:id',
+      resources: '/api/module_name/:module_nameId',
       permissions: '*'
     }]
   }, {
@@ -29,7 +29,7 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/module_name',
       permissions: ['get']
     }, {
-      resources: '/api/module_name/:id',
+      resources: '/api/module_name/:module_nameId',
       permissions: ['get']
     }]
   }, {
@@ -38,7 +38,7 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/module_name',
       permissions: ['get']
     }, {
-      resources: '/api/module_name/:id',
+      resources: '/api/module_name/:module_nameId',
       permissions: ['get']
     }]
   }]);
@@ -50,8 +50,8 @@ exports.invokeRolesPolicies = function () {
 exports.isAllowed = function (req, res, next) {
   var roles = (req.user) ? req.user.roles : ['guest'];
 
-  // If an article is being processed and the current user created it then allow any manipulation
-  if (req.article && req.user && req.article.user && req.article.user.id === req.user.id) {
+  // If an item is being processed and the current user created it then allow any manipulation
+  if (req.item && req.user && req.item.user && req.item.user.id === req.user.id) {
     return next();
   }
 

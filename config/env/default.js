@@ -62,11 +62,19 @@ module.exports = {
         }
       }
     },
-    newsFiles: {
+    news: {
       image: {
         dest: './modules/news/client/img/uploads/',
         limits: {
           fileSize: 1 * 1024 * 1024
+        }
+      }
+    },
+    slider: {
+      image: {
+        dest: './modules/slider/client/img/uploads/',
+        limits: {
+          fileSize: 1 * 2048 * 2048
         }
       }
     }
