@@ -57,9 +57,10 @@
         controller: 'FilesUploadModalController',
         templateUrl: '/modules/files/client/views/upload-modal.client.view.html',
         controllerAs: 'vm',
-        bindings: {
-          title: 'Upload news main image',
-          module: 'news'
+        resolve: {
+          moduleName: function () {
+            return 'news';
+          }
         }
       });
       modalInstance.result
