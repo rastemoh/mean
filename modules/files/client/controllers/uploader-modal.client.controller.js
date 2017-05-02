@@ -4,8 +4,8 @@
   angular.module('files')
     .controller('FilesUploadModalController', fileUploaderModalController);
 
-  fileUploaderModalController.$inject = ['Upload', '$timeout', 'FilesService', 'Notification', '$scope'];
-  function fileUploaderModalController(Upload, $timeout, File, Notification, $scope) {
+  fileUploaderModalController.$inject = ['Upload', '$timeout', 'FilesService', 'Notification', '$scope', 'moduleName'];
+  function fileUploaderModalController(Upload, $timeout, File, Notification, $scope, moduleName) {
     var vm = this;
     vm.uploadFile = function (file, errFiles) {
       vm.f = file;
@@ -13,7 +13,10 @@
       if (file) {
         file.upload = Upload.upload({
           url: '/api/files/upload',
-          data: { file: file } // add module: 'news' if needed
+          data: {
+            file: file,
+            module: moduleName
+          }
         });
         console.log('Uploading ...');
         file.upload.then(function (response) {

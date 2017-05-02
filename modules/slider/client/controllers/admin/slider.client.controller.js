@@ -54,8 +54,10 @@
         controller: 'FilesUploadModalController',
         templateUrl: '/modules/files/client/views/upload-modal.client.view.html',
         controllerAs: 'vm',
-        bindings: {
-          module: 'slider'
+        resolve: {
+          moduleName: function () {
+            return 'slider';
+          }
         }
       });
       modalInstance.result

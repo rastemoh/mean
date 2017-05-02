@@ -7,7 +7,8 @@
       <a class="btn btn-primary" ui-sref="uploadFile"><i class="glyphicon glyphicon-plus"></i> بارگذاری فایل جدید</a>
     </div>
   </div>
-  <div class="media" ng-repeat="file in vm.files">
+  <dir-pagination-controls></dir-pagination-controls>
+  <div class="media" dir-paginate="file in vm.files |itemsPerPage: 10">
     <div class="media-left">
       <a href="{{file.url()}}" target="_blank">
         <img class="media-object img-thumbnail img-responsive image-in-media-list" ng-src="{{file.url()}}" alt="">
@@ -27,4 +28,5 @@
       <button class="btn btn-link" ng-click="vm.remove(file)"><i class="glyphicon glyphicon-trash"></i>حذف</button>
     </div>
   </div>
+  <dir-pagination-controls></dir-pagination-controls>
 </section>
