@@ -17,7 +17,7 @@
       .state('admin.module_name.list', {
         url: '',
         templateUrl: '/modules/module_name/client/views/admin/list-module_name.client.view.html',
-        controller: 'module_nameAdminListController',
+        controller: 'Module_nameAdminListController',
         controllerAs: 'vm',
         data: {
           roles: ['admin']

@@ -10,8 +10,8 @@ module.exports = {
         'public/lib/angular-ui-notification/dist/angular-ui-notification.min.css',
         'public/lib/bootstrap/dist/css/bootstrap.min.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
-        'public/lib/bs.rtl.v3.3.4/bootstrap-rtl.min.css'
         // endbower
+        'public/my-lib/bs.rtl.v3.3.4/bootstrap-rtl.min.css'
       ],
       js: [
         // bower:js
@@ -25,12 +25,12 @@ module.exports = {
         'public/lib/angular-ui-router/release/angular-ui-router.min.js',
         'public/lib/ng-file-upload/ng-file-upload.min.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
-        'public/lib/ckeditor/ckeditor.js',
-        'public/lib/rr-ng-ckeditor/ng-ckeditor.min.js',
-        'public/lib/angular-utils-pagination/dirPagination.js',
-        'public/lib/moment/moment.min.js',
-        'public/lib/moment/moment-jalaali.js'
+        'public/lib/angularUtils-pagination/dirPagination.js',
         // endbower
+        'public/my-lib/ckeditor/ckeditor.js',
+        'public/my-lib/rr-ng-ckeditor/ng-ckeditor.min.js',
+        'public/my-lib/moment/moment.min.js',
+        'public/my-lib/moment/moment-jalaali.js'
       ]
     },
     css: 'public/dist/application*.min.css',

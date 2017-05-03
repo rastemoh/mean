@@ -10,27 +10,27 @@ module.exports = {
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
         'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
-        'public/lib/bs.rtl.v3.3.4/bootstrap-rtl.css'
         // endbower
+        'public/my-lib/bs.rtl.v3.3.4/bootstrap-rtl.css'
       ],
       js: [
         // bower:js
         'public/lib/angular/angular.js',
         'public/lib/angular-animate/angular-animate.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-        'public/lib/ng-file-upload/ng-file-upload.js',
         'public/lib/angular-messages/angular-messages.js',
         'public/lib/angular-mocks/angular-mocks.js',
         'public/lib/angular-resource/angular-resource.js',
         'public/lib/angular-ui-notification/dist/angular-ui-notification.js',
         'public/lib/angular-ui-router/release/angular-ui-router.js',
+        'public/lib/ng-file-upload/ng-file-upload.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
-        'public/lib/ckeditor/ckeditor.js',
-        'public/lib/rr-ng-ckeditor/ng-ckeditor.js',
-        'public/lib/angular-utils-pagination/dirPagination.js',
-        'public/lib/moment/moment.min.js',
-        'public/lib/moment/moment-jalaali.js'
+        'public/lib/angularUtils-pagination/dirPagination.js',
         // endbower
+        'public/my-lib/ckeditor/ckeditor.js',
+        'public/my-lib/rr-ng-ckeditor/ng-ckeditor.js',
+        'public/my-lib/moment/moment.min.js',
+        'public/my-lib/moment/moment-jalaali.js'
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },

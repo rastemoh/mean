@@ -17,7 +17,7 @@
       .state('module_name.list', {
         url: '',
         templateUrl: '/modules/module_name/client/views/list-module_name.client.view.html',
-        controller: 'module_nameListController',
+        controller: 'Module_nameListController',
         controllerAs: 'vm',
         data: {
           pageTitle: 'module_name List'
@@ -26,7 +26,7 @@
       .state('module_name.view', {
         url: '/:id',
         templateUrl: '/modules/module_name/client/views/view-module_name.client.view.html',
-        controller: 'module_nameController',
+        controller: 'Module_nameController',
         controllerAs: 'vm',
         resolve: {
           module_nameResolve: getModule_name
