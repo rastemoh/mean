@@ -25,7 +25,7 @@
 
     angular.extend(File.prototype, {
       url: function () {
-        var port = $location.port() === '80' ? '' : ':' + $location.port();
+        var port = $location.port() == '80' ? '' : ':' + $location.port();
         var baseUrl = $location.protocol() + '://' + $location.host() + port;
         var dir = this.dir;
         if (dir.startsWith('.')) {
