@@ -9,13 +9,13 @@ module.exports = {
     certificate: './config/sslcerts/cert.pem',
     caBundle: './config/sslcerts/cabundle.crt'
   },
-  port: process.env.PORT || 3001,
+  port: process.env.PORT || 3002,
   // Binding to 127.0.0.1 is safer in production.
   host: process.env.HOST || '0.0.0.0',
-  domain: 'http://rastemoh.ir',
-  sessionSecret: process.env.SESSION_SECRET || '6cbeaa03a726bb4ed7fca0c8a9a28632',
+  domain: 'http://agahclinic.com',
+  sessionSecret: process.env.SESSION_SECRET || 'ebc16d443271e2b7ca355f6bbb0b1743',
   db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean',
+    uri: process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/agah',
     options: {
       user: '',
       pass: ''
