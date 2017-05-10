@@ -6,6 +6,8 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
+var servicesList = ['درمان فردی', 'زوج درمانی', 'گروه درمانی', 'خانواده درمانی', 'ارزیابی swap', 'روانپزشک',
+  'روانشناس کودک', 'مشاوره ازدواج', 'درمانگر روان‌پویشی', 'ارزیابی'];
 /**
  * Article Schema
  */
@@ -48,12 +50,16 @@ var AgPersonSchema = new Schema({
     trim: true,
     default: ''
   },
+  services: [{
+    type: String,
+    enum: servicesList
+  }],
   type: [{
     type: String,
     enum: ['therapist', 'researcher', 'lecturer']
   }]
 });
-
+// virtual functions are available client side
 AgPersonSchema.virtual('fullName')
   .get(function () {
     return (this.name.title ? this.name.title + ' ' : '') +

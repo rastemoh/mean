@@ -13,7 +13,7 @@
     }, {
       get: {
         method: 'GET',
-        transformResponse: function(data) {
+        transformResponse: function (data) {
           var person = new AgPerson();
           angular.merge(person, angular.fromJson(data));
           person.setImage();
@@ -53,9 +53,11 @@
             url: function () {
               return '/modules/agPerson/client/img/default-user-image.png';
             }
-          }
+          };
         }
-      }
+      },
+      servicesList: ['درمان فردی', 'زوج درمانی', 'گروه درمانی', 'خانواده درمانی', 'ارزیابی swap', 'روانپزشک',
+        'روانشناس کودک', 'مشاوره ازدواج', 'درمانگر روان‌پویشی', 'ارزیابی'] // it should be the same as an array in server model
     });
 
     return AgPerson;

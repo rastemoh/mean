@@ -3,17 +3,22 @@
     <h1>لیست همکاران کلینیک آگاه</h1>
   </div>
   <div class="page-header">
-      <h3>درمانگرها</h3>
+    <h3>درمانگرها</h3>
   </div>
-  <div class="col-md-3 col-sm-6" ng-repeat="person in vm.agPersons">
-    <div class="panel panel-default text-center">
-      <div class="panel-heading">
-        <img class="img-responsive img-circle center-block" ng-src="{{person.image.url()}}">
-      </div>
-      <div class="panel-body">
-        <h4 ng-bind="person.fullName"></h4>
-        <p ng-bind="person.specialty"></p>
-        <a class="btn btn-primary" ui-sref="agPerson.view({ id: person._id })">جزئیات</a>
+  <div class="row">
+    <div ng-repeat="person in vm.agPersons">
+      <div class="clearfix" ng-if="$index % 4 == 0"></div>
+      <div class="col-md-3 col-sm-6 pull-right">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <img class="img-responsive img-circle center-block" ng-src="{{person.image.url()}}">
+          </div>
+          <div class="panel-body">
+            <h4 ng-bind="person.fullName"></h4>
+            <p ng-bind="person.specialty"></p>
+            <a class="btn btn-primary" ui-sref="agPerson.view({ id: person._id })">جزئیات</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

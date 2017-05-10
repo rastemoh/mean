@@ -70,6 +70,7 @@ exports.update = function (req, res) {
   item.specialty = req.body.specialty;
   item.type = req.body.type;
   item.resume = req.body.resume;
+  item.services = req.body.services;
   if (req.body.fileId) {
     File.findById(req.body.fileId, function (err, file) {
       if (err) {

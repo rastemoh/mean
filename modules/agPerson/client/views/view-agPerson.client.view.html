@@ -9,6 +9,7 @@
       </div>
       <p>{{vm.person.specialty}}</p>
       <p><span ng-repeat="item in vm.person.typeFa">{{item}}<span ng-if="!$last"> - </span></span></p>
+      <p><strong>خدمات: </strong> <span ng-repeat="item in vm.person.services">{{item}}<span ng-if="!$last"> - </span></span></p>
       <div class="page-header" ng-if="vm.person.resume">
         <h4>سوابق</h4>
       </div>

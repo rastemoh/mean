@@ -43,9 +43,16 @@
         </div>
         <div class="form-group" mt-to="vm.item.type">
           <label class="control-label" for="specialty">نوع همکاری: </label>
-          <input type="checkbox" mt-checkbox="'therapist'"> درمانگر
-          <input type="checkbox" mt-checkbox="'lecturer'">مدرس
-          <input type="checkbox" mt-checkbox="'researcher'">پژوهشگر
+          <input type="checkbox" mt-checkbox="'therapist'" id="checkbox-therapist"> <label for="checkbox-therapist"> درمانگر </label>
+          <input type="checkbox" mt-checkbox="'lecturer'" id="checkbox-lecturer"> <label for="checkbox-lecturer"> مدرس </label>
+          <input type="checkbox" mt-checkbox="'researcher'" id="checkbox-researcher"> <label for="checkbox-researcher"> پژوهشگر </label>
+        </div>
+        <div class="form-group" mt-to="vm.item.services">
+          <label class="control-label">خدمات: </label>
+          <br>
+          <span ng-repeat="service in vm.item.servicesList" style="margin-left: 8px;">
+            <input type="checkbox" mt-checkbox="service" id="services-checkbox-{{$index}}"> <label for="services-checkbox-{{$index}}">{{service}}</label>
+          </span>
         </div>
         <div class="form-group">
           <label class="control-label" for="content">رزومه</label>
