@@ -66,6 +66,9 @@ exports.update = function (req, res) {
 
   item.name.first = req.body.name.first;
   item.name.last = req.body.name.last;
+  item.name.title = req.body.name.title;
+  item.specialty = req.body.specialty;
+  item.type = req.body.type;
   item.resume = req.body.resume;
   if (req.body.fileId) {
     File.findById(req.body.fileId, function (err, file) {

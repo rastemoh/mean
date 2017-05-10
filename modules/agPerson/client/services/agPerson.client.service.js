@@ -48,6 +48,12 @@
           var file = new File();
           angular.merge(file, this.image);
           this.image = file;
+        } else {
+          this.image = {
+            url: function () {
+              return '/modules/agPerson/client/img/default-user-image.png';
+            }
+          }
         }
       }
     });

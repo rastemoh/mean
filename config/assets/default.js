@@ -30,7 +30,8 @@ module.exports = {
         'public/my-lib/ckeditor/ckeditor.js',
         'public/my-lib/rr-ng-ckeditor/ng-ckeditor.js',
         'public/my-lib/moment/moment.min.js',
-        'public/my-lib/moment/moment-jalaali.js'
+        'public/my-lib/moment/moment-jalaali.js',
+        'public/my-lib/angular-checkboxes/angular-checkboxes.js'
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },
@@ -67,6 +68,7 @@ module.exports = {
     config: ['modules/*/server/config/*.js'],
     policies: 'modules/*/server/policies/*.js',
     views: ['modules/*/server/views/*.html'],
-    uploadDirs: ['modules/users/client/img/profile/uploads', 'uploads', 'modules/news/client/img/uploads']
+    uploadDirs: ['modules/users/client/img/profile/uploads', 'uploads', 'modules/news/client/img/uploads',
+      './modules/agPerson/client/img/uploads']
   }
 };

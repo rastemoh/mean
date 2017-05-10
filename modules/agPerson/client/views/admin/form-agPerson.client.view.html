@@ -12,9 +12,17 @@
     <form name="vm.form.itemForm" class="form-horizontal" ng-submit="vm.save(vm.form.itemForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group">
+          <label class="control-label" for="title">عنوان</label>
+          <select name="title" ng-model="vm.item.name.title" id="title" class="form-control">
+            <option value="سرکار خانم">سرکار خانم</option>
+            <option value="جناب آقای">جناب آقای</option>
+            <option value="دکتر">دکتر</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label class="control-label" for="first_name">نام</label>
           <input name="title" type="text" ng-model="vm.item.name.first" id="first_name" class="form-control"
-                 placeholder="محمد" required autofocus>
+                 placeholder="محمد" autofocus>
         </div>
         <div class="form-group" show-errors>
           <label class="control-label" for="last_name">نام خانوادگی</label>
@@ -27,6 +35,17 @@
         <div class="col-md-12">
           <button type="button" class="btn btn-default" ng-click="vm.showModal()">آپلود تصویر فرد</button>
           <img class="img-thumbnail img-responsive" ng-src="{{vm.item.image.url()}}" alt="" ng-show="vm.item.image" style="max-height: 300px">
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="specialty">تخصص</label>
+          <input name="title" type="text" ng-model="vm.item.specialty" id="specialty" class="form-control"
+                 placeholder="دکترای روانشناسی بالینی" autofocus>
+        </div>
+        <div class="form-group" mt-to="vm.item.type">
+          <label class="control-label" for="specialty">نوع همکاری: </label>
+          <input type="checkbox" mt-checkbox="'therapist'"> درمانگر
+          <input type="checkbox" mt-checkbox="'lecturer'">مدرس
+          <input type="checkbox" mt-checkbox="'researcher'">پژوهشگر
         </div>
         <div class="form-group">
           <label class="control-label" for="content">رزومه</label>

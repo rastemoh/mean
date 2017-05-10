@@ -3,7 +3,7 @@
 
   angular
     .module('agPerson')
-    .controller('agPersonListController', AgPersonListController);
+    .controller('AgPersonListController', AgPersonListController);
 
   AgPersonListController.$inject = ['AgPersonService'];
 

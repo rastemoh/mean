@@ -8,18 +8,18 @@
   menuConfig.$inject = ['menuService'];
 
   function menuConfig(menuService) {
-    // menuService.addMenuItem('topbar', {
-    //   title: 'AgPerson',
-    //   state: 'agPerson',
-    //   type: 'dropdown',
-    //   roles: ['*']
-    // });
-    //
+    menuService.addMenuItem('topbar', {
+      title: 'همکاران کلینیک',
+      state: 'agPerson',
+      type: 'dropdown',
+      roles: ['*']
+    });
+
     // Add the dropdown list item
-    // menuService.addSubMenuItem('topbar', 'agPerson', {
-    //   title: 'List AgPerson',
-    //   state: 'agPerson.list',
-    //   roles: ['*']
-    // });
+    menuService.addSubMenuItem('topbar', 'agPerson', {
+      title: 'لیست همکاران',
+      state: 'agPerson.list',
+      roles: ['*']
+    });
   }
 }());

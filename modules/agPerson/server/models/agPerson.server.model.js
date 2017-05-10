@@ -19,6 +19,10 @@ var AgPersonSchema = new Schema({
     ref: 'User'
   },
   name: {
+    title: {
+      type: String,
+      enum: ['جناب آقای', 'سرکار خانم', 'دکتر']
+    },
     first: {
       type: String,
       trim: true,
@@ -34,6 +38,11 @@ var AgPersonSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'File'
   },
+  specialty: {
+    type: String,
+    trim: true,
+    default: ''
+  },
   resume: {
     type: String,
     trim: true,
@@ -47,9 +56,24 @@ var AgPersonSchema = new Schema({
 
 AgPersonSchema.virtual('fullName')
   .get(function () {
-    return this.name.first + ' ' + this.name.last;
+    return (this.name.title ? this.name.title + ' ' : '') +
+      (this.name.first ? this.name.first + ' ' : '') + this.name.last;
   });
-
-AgPersonSchema.set('toJSON', { virtuals: true });//to pass the fullName to client side
+AgPersonSchema.virtual('typeFa')
+  .get(function () {
+    var array = [];
+    var lut = {
+      therapist: 'درمانگر',
+      researcher: 'پژوهشگر',
+      lecturer: 'مدرس'
+    };
+    for (var prop in lut) {
+      if (this.type.indexOf(prop) > -1) { // if the value is in type array
+        array.push(lut[prop]);
+      }
+    }
+    return array;
+  });
+AgPersonSchema.set('toJSON', { virtuals: true });// to pass the fullName to client side
 
 mongoose.model('AgPerson', AgPersonSchema);

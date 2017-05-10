@@ -3,15 +3,16 @@
 
   angular
     .module('agPerson')
-    .controller('agPersonController', AgPersonController);
+    .controller('AgPersonController', AgPersonController);
 
-  AgPersonController.$inject = ['$scope', 'agPersonResolve', 'Authentication'];
+  AgPersonController.$inject = ['agPersonResolve', 'Authentication', '$sce'];
 
-  function AgPersonController($scope, agPerson, Authentication) {
+  function AgPersonController(agPerson, Authentication, $sce) {
     var vm = this;
 
-    vm.item = agPerson;
+    vm.person = agPerson;
     vm.authentication = Authentication;
+    vm.trustHtml = $sce.trustAsHtml;
 
   }
 }());

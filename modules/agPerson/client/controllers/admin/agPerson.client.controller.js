@@ -66,7 +66,7 @@
       modalInstance.result
         .then(function (data) {
           vm.item.image = data.$value;
-          vm.fileId = data.$value._id;
+          vm.item.fileId = data.$value._id;
         });
     }
   }
