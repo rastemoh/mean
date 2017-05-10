@@ -30,7 +30,8 @@ module.exports = {
         'public/my-lib/ckeditor/ckeditor.js',
         'public/my-lib/rr-ng-ckeditor/ng-ckeditor.min.js',
         'public/my-lib/moment/moment.min.js',
-        'public/my-lib/moment/moment-jalaali.js'
+        'public/my-lib/moment/moment-jalaali.js',
+        'public/my-lib/angular-checkboxes/angular-checkboxes.js'
       ]
     },
     css: 'public/dist/application*.min.css',

@@ -77,6 +77,11 @@ module.exports = {
           fileSize: 1 * 2048 * 2048
         }
       }
+    },
+    agPerson: {
+      image: {
+        dest: './modules/agPerson/client/img/uploads'
+      }
     }
   },
   shared: {

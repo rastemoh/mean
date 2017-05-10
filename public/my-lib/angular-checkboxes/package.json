@@ -1,0 +1,104 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "angular-checkboxes",
+        "scope": null,
+        "escapedName": "angular-checkboxes",
+        "name": "angular-checkboxes",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\Users\\mbr\\Documents\\development\\meanjs"
+    ]
+  ],
+  "_from": "angular-checkboxes@latest",
+  "_id": "angular-checkboxes@1.0.2",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/angular-checkboxes",
+  "_nodeVersion": "0.12.3",
+  "_npmUser": {
+    "name": "msieurtoph",
+    "email": "chr.pot@gmail.com"
+  },
+  "_npmVersion": "2.9.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "angular-checkboxes",
+    "scope": null,
+    "escapedName": "angular-checkboxes",
+    "name": "angular-checkboxes",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-checkboxes/-/angular-checkboxes-1.0.2.tgz",
+  "_shasum": "58ecc00e85e8bbfec9aa94a0649b285991a25d58",
+  "_shrinkwrap": null,
+  "_spec": "angular-checkboxes",
+  "_where": "C:\\Users\\mbr\\Documents\\development\\meanjs",
+  "author": {
+    "name": "msieurtoph",
+    "email": "chr.pot@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/msieurtoph/angular-checkboxes/issues"
+  },
+  "dependencies": {},
+  "description": "Bind a list of checkboxes to a unique ng-model array",
+  "devDependencies": {
+    "angular": "^1.4.3",
+    "angular-mocks": "^1.4.3",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-karma": "^0.12.0",
+    "jshint-stylish": "^2.0.1",
+    "karma": "^0.13.9",
+    "karma-coverage": "^0.5.0",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-spec-reporter": "0.0.20",
+    "load-grunt-tasks": "^3.2.0",
+    "phantomjs": "^1.9.18",
+    "time-grunt": "^1.2.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "58ecc00e85e8bbfec9aa94a0649b285991a25d58",
+    "tarball": "https://registry.npmjs.org/angular-checkboxes/-/angular-checkboxes-1.0.2.tgz"
+  },
+  "gitHead": "050d41c8448c3c09b8e21c0c42fac7ebe355063c",
+  "homepage": "https://github.com/msieurtoph/angular-checkboxes#readme",
+  "keywords": [
+    "ng-model",
+    "checkbox",
+    "array",
+    "list"
+  ],
+  "license": "MIT",
+  "main": "angular-checkboxes.js",
+  "maintainers": [
+    {
+      "name": "msieurtoph",
+      "email": "chr.pot@gmail.com"
+    }
+  ],
+  "name": "angular-checkboxes",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msieurtoph/angular-checkboxes.git"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "version": "1.0.2"
+}

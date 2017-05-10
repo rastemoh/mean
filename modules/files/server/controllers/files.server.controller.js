@@ -77,7 +77,7 @@ exports.upload = function (req, res) {
 
   function checkImageModule() {
     return new Promise(function (resolve, reject) {
-      if (req.body.module === 'news' || req.body.module === 'slider') {
+      if (req.body.module === 'news' || req.body.module === 'slider' || req.body.module === 'agPerson') {
         var module = req.body.module;
         fs.rename(config.uploads.siteFiles.image.dest + req.file.filename, config.uploads[module].image.dest + req.file.filename, function (err) {
           if (err) {
