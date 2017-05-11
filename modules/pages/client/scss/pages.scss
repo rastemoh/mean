@@ -72,3 +72,10 @@ footer {
     height: 70%;
   }
 }
+
+a.no-color {
+  color: rgb(51, 51, 51);
+  &:hover {
+    text-decoration: none;
+  }
+}
