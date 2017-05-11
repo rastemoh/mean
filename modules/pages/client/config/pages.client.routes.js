@@ -37,7 +37,7 @@
       })
     // custom pages routes follows
       .state('main', {
-        url: '/main',
+        url: '/',
         templateUrl: '/modules/pages/client/views/main-page.client.view.html',
         controller: 'MainPageController',
         controllerAs: 'vm'
