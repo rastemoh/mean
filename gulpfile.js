@@ -268,7 +268,7 @@ gulp.task('copyLocalEnvConfig', function () {
 // Make sure upload directory exists
 gulp.task('makeUploadsDir', function () {
   return defaultAssets.server.uploadDirs.forEach(function (dir) {
-    try{
+    try {
       fs.mkdirSync(dir);
     } catch (e) {
       if (e.code !== 'EEXIST') {
