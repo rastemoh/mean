@@ -5,9 +5,9 @@
     .module('agWorkshop.services')
     .factory('AgWorkshopService', AgWorkshopService);
 
-  AgWorkshopService.$inject = ['$resource', '$log'];
+  AgWorkshopService.$inject = ['$resource', '$log', 'FilesService'];
 
-  function AgWorkshopService($resource, $log) {
+  function AgWorkshopService($resource, $log, File) {
     var AgWorkshop = $resource('/api/agWorkshop/:id', {
       id: '@_id'
     }, {

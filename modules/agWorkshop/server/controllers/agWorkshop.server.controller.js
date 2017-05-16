@@ -6,6 +6,7 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   AgWorkshop = mongoose.model('AgWorkshop'),
+  File = mongoose.model('File'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**

@@ -20,7 +20,7 @@
         controller: 'AgWorkshopListController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'agWorkshop List'
+          pageTitle: 'لیست کارگاه‌ها'
         }
       })
       .state('agWorkshop.view', {
@@ -32,7 +32,7 @@
           agWorkshopResolve: getAgWorkshop
         },
         data: {
-          pageTitle: 'AgWorkshop {{ agWorkshopResolve.title }}'
+          pageTitle: 'کارگاه {{ agWorkshopResolve.title }}'
         }
       });
   }

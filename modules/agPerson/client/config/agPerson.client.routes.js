@@ -20,7 +20,7 @@
         controller: 'AgPersonListController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'agPerson List'
+          pageTitle: 'لیست همکاران کلینیک'
         }
       })
       .state('agPerson.view', {
@@ -32,7 +32,7 @@
           agPersonResolve: getAgPerson
         },
         data: {
-          pageTitle: 'AgPerson {{ agPersonResolve.title }}'
+          pageTitle: '{{ agPersonResolve.title }}'
         }
       });
   }

@@ -10,6 +10,7 @@
   function AgWorkshopListController(AgWorkshopService) {
     var vm = this;
 
-    vm.agWorkshops = AgWorkshopService.query();
+    vm.workshops = AgWorkshopService.query();
+    console.log(vm.workshops.length)
   }
 }());
