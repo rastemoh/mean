@@ -3,7 +3,7 @@
 
   angular
     .module('module_name')
-    .controller('module_nameController', Module_nameController);
+    .controller('Module_nameController', Module_nameController);
 
   Module_nameController.$inject = ['$scope', 'module_nameResolve', 'Authentication'];
 
