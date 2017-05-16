@@ -82,6 +82,11 @@ module.exports = {
       image: {
         dest: './modules/agPerson/client/img/uploads'
       }
+    },
+    agWorkshop: {
+      image: {
+        dest: './modules/agPerson/client/img/uploads'
+      }
     }
   },
   shared: {
