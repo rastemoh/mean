@@ -11,6 +11,5 @@
     var vm = this;
 
     vm.workshops = AgWorkshopService.query();
-    console.log(vm.workshops.length)
   }
 }());
