@@ -20,7 +20,7 @@
         controller: 'ArticlesListController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Articles List'
+          pageTitle: 'لیست مقالات'
         }
       })
       .state('articles.view', {
@@ -32,7 +32,7 @@
           articleResolve: getArticle
         },
         data: {
-          pageTitle: 'Article {{ articleResolve.title }}'
+          pageTitle: 'مقاله {{ articleResolve.title }}'
         }
       });
   }

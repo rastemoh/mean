@@ -1,5 +1,8 @@
-<section>
-  <div class="page-header">
+<section >
+  <div class="page-header" ng-class="{'ltr':vm.article.isEnglish()}">
+    <div ng-class="{'pull-left':!vm.article.isEnglish(), 'pull-right':vm.article.isEnglish()}">
+      <a ui-sref="articles.list" class="btn btn-primary">بازگشت به لیست</a>
+    </div>
     <h1 ng-bind="vm.article.title"></h1>
   </div>
   <small>
@@ -11,5 +14,13 @@
       <span ng-if="!vm.article.user">کاربر حذف شده</span>
     </em>
   </small>
-  <p class="lead" ng-bind="vm.article.content"></p>
+  <p class="lead" ng-bind-html="vm.trustHtml(vm.article.content)" ng-class="{'ltr':vm.article.isEnglish()}"></p>
+  <p ng-if="vm.article.keywords.length">
+    <strong>کلیدواژه ها:</strong>
+    <span ng-repeat="keyword in vm.article.keywords track by keyword">{{keyword}}<span ng-if="!$last"> - </span></span>
+  </p>
+  <hr>
+  <p ng-if="vm.article.file">
+    <a ng-href="{{vm.article.file.url()}}" target="_blank"><i class="fa fa-download"></i> دانلود فایل مقاله</a>
+  </p>
 </section>

@@ -20,7 +20,7 @@
         controller: 'newsListController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'news List'
+          pageTitle: 'لیست اخبار و یادداشت‌ها'
         }
       })
       .state('news.view', {
@@ -32,7 +32,7 @@
           newsResolve: getNews
         },
         data: {
-          pageTitle: 'News {{ newsResolve.title }}'
+          pageTitle: '{{ newsResolve.title }}'
         }
       });
   }

@@ -5,14 +5,36 @@
     .module('articles.services')
     .factory('ArticlesService', ArticlesService);
 
-  ArticlesService.$inject = ['$resource', '$log'];
+  ArticlesService.$inject = ['$resource', '$log', 'FilesService'];
 
-  function ArticlesService($resource, $log) {
+  function ArticlesService($resource, $log, File) {
     var Article = $resource('/api/articles/:articleId', {
       articleId: '@_id'
     }, {
+      get: {
+        method: 'GET',
+        transformResponse: function(data) {
+          var article = new Article();
+          angular.merge(article, angular.fromJson(data));
+          article.setFile();
+          return article;
+        }
+      },
       update: {
         method: 'PUT'
+      },
+      query: {
+        method: 'GET',
+        isArray: true,
+        transformResponse: function (data) {
+          var array = angular.fromJson(data);
+          return array.map(function (item) {
+            var article = new Article();
+            angular.merge(article, item);
+            article.setFile();
+            return article;
+          });
+        }
       }
     });
 
@@ -20,6 +42,21 @@
       createOrUpdate: function () {
         var article = this;
         return createOrUpdate(article);
+      },
+      setFile: function () {
+        if (this.file) {
+          var file = new File();
+          angular.merge(file, this.file);
+          this.file = file;
+        }
+      },
+      isEnglish: function () {
+        if (this.lang) {
+          if (this.lang === 'en') {
+            return true;
+          }
+        }
+        return false;
       }
     });
 

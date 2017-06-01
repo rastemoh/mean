@@ -3,6 +3,7 @@
     <h1>{{vm.article._id ? 'ویرایش مقاله' : 'مقاله جدید'}}</h1>
   </div>
   <div class="pull-left">
+    <a ui-sref="admin.articles.list" class="btn btn-primary">بازگشت به لیست</a>
     <a ng-show="vm.article._id" class="btn btn-primary" ng-click="vm.remove()">
       <i class="glyphicon glyphicon-trash"></i>
     </a>
@@ -10,20 +11,34 @@
   <div class="col-md-12">
     <form name="vm.form.articleForm" class="form-horizontal" ng-submit="vm.save(vm.form.articleForm.$valid)" novalidate>
       <fieldset>
+        <div class="form-group" ng-init="vm.article.lang = 'fa'">
+          <strong>زبان مقاله را انتخاب کنید:</strong>
+          <input type="radio" ng-model="vm.article.lang" ng-value="'fa'" id="fa-radio"> <label for="fa-radio">فارسی</label>
+          <input type="radio" ng-model="vm.article.lang" ng-value="'en'" id="en-radio" style="margin-right: 15px">
+          <label for="en-radio">انگلیسی</label>
+        </div>
         <div class="form-group" show-errors>
           <label class="control-label" for="title">عنوان</label>
-          <input name="title" type="text" ng-model="vm.article.title" id="title" class="form-control" placeholder="Title" required autofocus>
+          <input name="title" type="text" ng-model="vm.article.title" id="title" class="form-control"
+                 required autofocus ng-class="{'ltr':vm.article.isEnglish()}">
           <div ng-messages="vm.form.articleForm.title.$error" role="alert">
             <p class="help-block error-text" ng-message="required">عنوان مقاله اجباری است.</p>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label" for="content">محتوا</label>
-          <textarea name="content" data-ng-model="vm.article.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+          <textarea name="content" ckeditor="vm.editorOptions" data-ng-model="vm.article.content" id="content"
+                    class="form-control" cols="30" rows="10"></textarea>
+        </div>
+        <div class="col-md-12">
+          <button type="button" class="btn btn-default" ng-click="vm.showModal()">آپلود فایل مقاله</button>
+          <strong ng-if="vm.article.file">فایل انتخاب شده: </strong>
+          <a ng-if="vm.article.file" ng-href="{{vm.article.file.url()}}" target="_blank">{{vm.article.file.filename}}</a>
         </div>
         <div class="form-group">
           <label class="control-label" for="keywords">کلیدواژه ها</label>
-          <input type="text" name="keywords" ng-model="vm.article.keywords" id="keywords" class="form-control" placeholder="Keywords">
+          <input type="text" name="keywords" ng-model="vm.article.keywords" ng-list="-" id="keywords" ng-class="{'ltr':vm.article.isEnglish()}"
+                 class="form-control" placeholder="کلیدواژه ها - را با - خط تیره (-) - از هم - جدا کنید">
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-default">{{vm.article._id ? 'به روز رسانی' : 'ثبت'}}</button>

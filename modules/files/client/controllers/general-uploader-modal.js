@@ -40,13 +40,13 @@
     vm.saveFile = function () {
       vm.newFile.createOrUpdate()
         .then(function (file) {
-          Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i>The file saved successfully!' });
+          Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i>فایل با موفقیت ذخیره شد!' });
           $scope.$close({ $value: file });
         })
         .catch(function (result) {
           Notification.error({
             message: result.data.message,
-            title: '<i class="glyphicon glyphicon-remove"></i> File save error!'
+            title: '<i class="glyphicon glyphicon-remove"></i> مشکل در ذخیره سازی فایل!'
           });
         });
     };

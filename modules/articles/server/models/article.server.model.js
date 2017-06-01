@@ -25,15 +25,23 @@ var ArticleSchema = new Schema({
     default: '',
     trim: true
   },
+  file: {
+    type: Schema.ObjectId,
+    ref: 'File'
+  },
+  lang: {
+    type: String,
+    enum: ['en', 'fa'],
+    default: 'fa'
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'
   },
-  keywords: {
+  keywords: [{
     type: String,
-    default: '',
     trim: true
-  }
+  }]
 });
 
 mongoose.model('Article', ArticleSchema);
