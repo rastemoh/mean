@@ -5,19 +5,23 @@
     .module('files')
     .controller('FilesUploadController', FilesUploadController);
 
-  FilesUploadController.$inject = ['$scope', 'Upload', '$timeout', 'Authentication', 'FilesService', 'Notification'];
+  FilesUploadController.$inject = ['$state', 'Upload', '$timeout', 'Authentication', 'FilesService', 'Notification'];
 
-  function FilesUploadController($scope, Upload, $timeout, Authentication, File, Notification) {
+  function FilesUploadController($state, Upload, $timeout, Authentication, File, Notification) {
     var vm = this;
     vm.authentication = Authentication;
     vm.fileUploaded = false;
+    vm.urls = {
+      file: '/api/files/upload-file',
+      image: '/api/files/upload-image'
+    };
     vm.uploadFile = function (file, errFiles) {
       vm.f = file;
       vm.errFile = errFiles && errFiles[0];
       if (file) {
         file.upload = Upload.upload({
-          url: '/api/files/upload',
-          data: { file: file } // add module: 'news' if needed
+          url: vm.type === 'doc' ? vm.urls.file : vm.urls.image,
+          data: { file: file }
         });
         console.log('Uploading ...');
         file.upload.then(function (response) {
@@ -28,6 +32,7 @@
             vm.newFile.dir = response.data.dir;
             vm.newFile.filename = response.data.filename;
             vm.newFile.size = response.data.size;
+            vm.newFile.type = vm.type;
             vm.fileUploaded = true;
           });
         }, function (response) {// catch
@@ -42,17 +47,17 @@
     vm.saveFile = function () {
       vm.newFile.createOrUpdate()
         .then(function (file) {
-          Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i>The file saved successfully!' });
+          Notification.success({ message: '<i class="fa fa-check"></i>The file saved successfully!' });
+          $timeout(function() { $state.go('files.list');}, 500);
         })
         .catch(function (result) {
-          Notification.error({ message: result.data.message, title: '<i class="glyphicon glyphicon-remove"></i> File save error!' });
+          Notification.error({ message: result.data.message, title: '<i class="fa fa-remove"></i> File save error!' });
         });
     };
 
     vm.dismiss = function () {
       vm.fileUploaded = false;
       vm.newFile = {};
-      console.log('to remove the file');
     };
   }
 }());

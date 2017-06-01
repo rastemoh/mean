@@ -34,6 +34,14 @@
           dir = '/' + dir;
         }
         return baseUrl + dir + this.filename;
+      },
+      isImage: function () {
+        if (this.type) {
+          if (this.type === 'doc') {
+            return false;
+          }
+        }
+        return true;
       }
     });
 

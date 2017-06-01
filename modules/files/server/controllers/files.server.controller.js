@@ -17,7 +17,6 @@ var path = require('path'),
 exports.create = function (req, res) {
   var file = new File(req.body);
   file.user = req.user;
-
   file.save(function (err) {
     if (err) {
       return res.status(422).send({
@@ -32,14 +31,14 @@ exports.create = function (req, res) {
 /**
  * Upload a file
  */
-exports.upload = function (req, res) {
+exports.uploadImage = function (req, res) {
   // Filtering to upload only images
   var multerConfig = config.uploads.siteFiles.image;
   multerConfig.fileFilter = require(path.resolve('./config/lib/multer')).imageFileFilter;
   multerConfig.storage = require(path.resolve('./config/lib/multer')).storageFn;
   var upload = multer(multerConfig).single('file');
   var dir = config.uploads.siteFiles.image.dest;
-  uploadImage()
+  doUploadImage()
     .then(function () {
       checkImageModule()
         .then(function (dest) {
@@ -63,7 +62,7 @@ exports.upload = function (req, res) {
     });
   }
 
-  function uploadImage() {
+  function doUploadImage() {
     return new Promise(function (resolve, reject) {
       upload(req, res, function (uploadError) {
         if (uploadError) {
@@ -94,6 +93,43 @@ exports.upload = function (req, res) {
   }
 };
 
+exports.uploadFile = function (req, res) {
+  var multerConfig = config.uploads.siteFiles.image;
+  multerConfig.fileFilter = require(path.resolve('./config/lib/multer')).anyFileFilter;
+  multerConfig.storage = require(path.resolve('./config/lib/multer')).storageFn;
+  var upload = multer(multerConfig).single('file');
+  var dir = config.uploads.siteFiles.image.dest;
+  doUploadFile()
+    .then(function () {
+      sendResponse();
+    })
+    .catch(function (err) {
+      res.status(422).send(err);
+    });
+
+  function sendResponse() {
+    res.json({
+      'dir': dir,
+      'filename': req.file.filename,
+      'size': req.file.size,
+      'file-info': req.file
+    });
+  }
+
+  function doUploadFile() {
+    return new Promise(function (resolve, reject) {
+      upload(req, res, function (uploadError) {
+        if (uploadError) {
+          reject(errorHandler.getErrorMessage(uploadError));
+        } else {
+          resolve();
+        }
+      });
+    });
+  }
+
+};
+
 /**
  * Show the current file
  */
@@ -118,6 +154,7 @@ exports.update = function (req, res) {
   file.content = req.body.content;
   file.keywords = req.body.keywords;
   file.url = req.body.url;
+  file.type = req.body.type;
   file.save(function (err) {
     if (err) {
       return res.status(422).send({

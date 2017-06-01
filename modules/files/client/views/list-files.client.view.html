@@ -10,8 +10,9 @@
   <dir-pagination-controls></dir-pagination-controls>
   <div class="media" dir-paginate="file in vm.files |itemsPerPage: 10">
     <div class="media-left">
-      <a href="{{file.url()}}" target="_blank">
-        <img class="media-object img-thumbnail img-responsive image-in-media-list" ng-src="{{file.url()}}" alt="">
+      <a href="{{file.url()}}" target="_blank" >
+        <img class="media-object img-thumbnail img-responsive image-in-media-list" ng-src="{{file.url()}}" alt="" ng-if="file.isImage()">
+        <i class="fa fa-5x fa-file-o" ng-if="!file.isImage()"></i>
       </a>
     </div>
     <div class="media-body">
