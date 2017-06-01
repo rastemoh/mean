@@ -24,6 +24,11 @@ var FileSchema = new Schema({
     type: String,
     default: ''
   },
+  type: {
+    type: String,
+    enum: ['img', 'doc'],
+    default: 'img'
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'

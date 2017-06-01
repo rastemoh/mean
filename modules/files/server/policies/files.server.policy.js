@@ -18,7 +18,10 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/files',
       permissions: '*'
     }, {
-      resources: '/api/files/upload',
+      resources: '/api/files/upload-image',
+      permissions: '*'
+    }, {
+      resources: '/api/files/upload-file',
       permissions: '*'
     }, {
       resources: '/api/files/:articleId',
@@ -30,8 +33,11 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/files',
       permissions: []
     }, {
-      resources: '/api/files/:upload',
-      permissions: '*'
+      resources: '/api/files/upload-image',
+      permissions: []
+    }, {
+      resources: '/api/files/upload-file',
+      permissions: []
     }, {
       resources: '/api/files/:articleId',
       permissions: []
@@ -42,7 +48,7 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/files',
       permissions: []
     }, {
-      resources: '/api/files/:upload',
+      resources: '/api/files/upload',
       permissions: []
     }, {
       resources: '/api/files/:articleId',

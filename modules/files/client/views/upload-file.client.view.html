@@ -7,15 +7,27 @@
   <form method="post" enctype="multipart/form-data">
     <div class="row">
       <div class="col-md-6">
-        <p>لطفا فایل مورد نظر را انتخاب کنید:</p>
+        <p>ابتدا نوع فایل را مشخص کنید:</p>
+        <input type="radio" ng-model="vm.type" ng-value="'img'" id="image-radio">
+        <label for="image-radio"> تصویر <small>(jpg, png, gif, ...)</small></label>
+        <input type="radio" ng-model="vm.type" ng-value="'doc'" id="doc-radio" style="margin-right: 15px">
+        <label for="doc-radio"> سند <small>(pdf, doc, docx, ...)</small></label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6" ng-show="vm.type">
+        <p>فایل مورد نظر را انتخاب کنید:</p>
         <!--picfile-->
         <div class="form-group">
-          <button type="file" class="btn btn-default" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB"
-                  ngf-select="vm.uploadFile($file, $invalidFiles)">انتخاب فایل
+          <button type="file" class="btn btn-default" accept="image/*" ngf-max-height="2000" ngf-max-size="2MB"
+                  ngf-select="vm.uploadFile($file, $invalidFiles)" ng-if="vm.type === 'img'">انتخاب تصویر
           </button>
-          <span class="help-block">
-                        {{errorMsg}}
-                        <span>{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}</span>
+          <button type="file" class="btn btn-default" accept="*/*" ngf-max-size="3MB"
+                  ngf-select="vm.uploadFile($file, $invalidFiles)" ng-if="vm.type === 'doc'">انتخاب فایل
+          </button>
+          <span class="help-block" ng-if="vm.errorMsg">
+                        {{vm.errorMsg}}
+                        <span>{{vm.f.name}} {{vm.errFile.name}} {{vm.errFile.$error}} {{vm.errFile.$errorParam}}</span>
                     </span>
         </div>
         <div class="progress" ng-show="vm.f.progress >= 0">
@@ -36,9 +48,11 @@
         </div>
       </div>
       <div class="col-md-6" ng-show="vm.fileUploaded">
-        <div id="image-container">
+        <div id="image-container" ng-if="vm.type === 'img'">
           <img ng-src={{vm.newFile.url()}} class="img-responsive">
         </div>
+        <p ng-if="vm.type === 'doc'">فایل بارگزاری شده: {{vm.newFile.filename}}
+        </p>
       </div>
     </div>
   </form>

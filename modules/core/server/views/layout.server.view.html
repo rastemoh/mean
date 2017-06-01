@@ -42,7 +42,7 @@
       {{{block "content"}}}
     </section>
   </section>
-
+  <ng-include src="'/modules/core/client/views/footer.client.view.html'"></ng-include>
   <noscript>
     <style>
       [ng\:cloak], [ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -65,7 +65,7 @@
 
   <!--Application JavaScript Files-->
     {{#each jsFiles}}<script type="text/javascript" src="/{{this}}"></script>{{/each}}
-  
+
   <!--owasp config sync-->
   <script type="text/javascript">
     var sharedConfig = {{{ sharedConfig }}};

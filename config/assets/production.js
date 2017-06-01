@@ -10,6 +10,7 @@ module.exports = {
         'public/lib/angular-ui-notification/dist/angular-ui-notification.min.css',
         'public/lib/bootstrap/dist/css/bootstrap.min.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
+        'public/lib/components-font-awesome/css/font-awesome.min.css',
         // endbower
         'public/my-lib/bs.rtl.v3.3.4/bootstrap-rtl.min.css'
       ],

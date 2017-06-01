@@ -25,7 +25,7 @@
 
     angular.extend(File.prototype, {
       url: function () {
-        var port = $location.port() == '80' ? '' : ':' + $location.port();
+        var port = parseInt($location.port(), 10) === 80 ? '' : ':' + $location.port();
         var baseUrl = $location.protocol() + '://' + $location.host() + port;
         var dir = this.dir;
         if (dir.startsWith('.')) {
@@ -34,6 +34,14 @@
           dir = '/' + dir;
         }
         return baseUrl + dir + this.filename;
+      },
+      isImage: function () {
+        if (this.type) {
+          if (this.type === 'doc') {
+            return false;
+          }
+        }
+        return true;
       }
     });
 

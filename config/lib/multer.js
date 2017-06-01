@@ -12,6 +12,10 @@ module.exports.imageFileFilter = function (req, file, callback) {
   callback(null, true);
 };
 
+module.exports.anyFileFilter = function (req, file, callback) {
+  callback(null, true);
+};
+
 module.exports.storageFn = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, config.uploads.siteFiles.image.dest);

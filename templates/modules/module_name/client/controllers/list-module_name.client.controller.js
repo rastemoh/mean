@@ -3,7 +3,7 @@
 
   angular
     .module('module_name')
-    .controller('module_nameListController', Module_nameListController);
+    .controller('Module_nameListController', Module_nameListController);
 
   Module_nameListController.$inject = ['Module_nameService'];
 
