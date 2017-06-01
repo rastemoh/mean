@@ -57,7 +57,8 @@
           }
         }
         return false;
-      }
+      },
+      lang: 'fa' // default value for language
     });
 
     return Article;
