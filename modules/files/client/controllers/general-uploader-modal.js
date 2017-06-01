@@ -2,17 +2,17 @@
   'use strict';
 
   angular.module('files')
-    .controller('ImageUploadModalController', imageUploaderModalController);
+    .controller('FilesUploadModalController', fileUploaderModalController);
 
-  imageUploaderModalController.$inject = ['Upload', '$timeout', 'FilesService', 'Notification', '$scope', 'moduleName'];
-  function imageUploaderModalController(Upload, $timeout, File, Notification, $scope, moduleName) {
+  fileUploaderModalController.$inject = ['Upload', '$timeout', 'FilesService', 'Notification', '$scope', 'moduleName'];
+  function fileUploaderModalController(Upload, $timeout, File, Notification, $scope, moduleName) {
     var vm = this;
     vm.uploadFile = function (file, errFiles) {
       vm.f = file;
       vm.errFile = errFiles && errFiles[0];
       if (file) {
         file.upload = Upload.upload({
-          url: '/api/files/upload-image',
+          url: '/api/files/upload-file',
           data: {
             file: file,
             module: moduleName
@@ -25,7 +25,7 @@
             vm.newFile.dir = response.data.dir;
             vm.newFile.filename = response.data.filename;
             vm.newFile.size = response.data.size;
-            vm.newFile.type = 'img';
+            vm.newFile.type = 'doc';
             vm.fileUploaded = true;
           });
         }, function (response) {// catch

@@ -51,7 +51,7 @@
 
     function showModal () {
       var modalInstance = $uibModal.open({
-        controller: 'FilesUploadModalController',
+        controller: 'ImageUploadModalController',
         templateUrl: '/modules/files/client/views/upload-modal.client.view.html',
         controllerAs: 'vm',
         resolve: {

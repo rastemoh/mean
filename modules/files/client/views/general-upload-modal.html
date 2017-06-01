@@ -1,18 +1,17 @@
 <!-- Upload Pic Modal -->
 <div class="modal-header">
   <button type="button" class="close" ng-click="$dismiss()">&times;</button>
-  <h4 class="modal-title">آپلود تصویر</h4>
+  <h4 class="modal-title" >Upload File</h4>
 </div>
 <form method="post" enctype="multipart/form-data">
   <div class="modal-body">
     <div class="row">
       <div class="col-md-6">
-        <p>لطفا تصویر مورد نظر را انتخاب کنید</p>
+        <p>Please select the file</p>
         <!--picfile-->
         <div class="form-group" ng-class="{'has-error':vm.errorMsg}">
-          <button type="file" class="btn btn-default" accept="image/*" ngf-max-height="2000" ngf-max-size="2MB"
-                  ngf-select="vm.uploadFile($file, $invalidFiles)">انتخاب
-          </button>
+          <button type="file" class="btn btn-default"  accept="*/*" ngf-max-size="3MB"
+                  ngf-select="vm.uploadFile($file, $invalidFiles)">Select</button>
           <span class="help-block" ng-if="vm.errorMsg">
             <i class="glyphicon glyphicon-warning-sign"></i>
                         {{vm.errorMsg}}
@@ -26,15 +25,13 @@
         </div>
       </div>
       <div class="col-md-6" ng-show="vm.fileUploaded">
-        <div id="image-container">
-          <img ng-src={{vm.newFile.url()}} class="img-responsive">
-        </div>
+        <i class="glyphicon glyphicon-check"></i> File uploaded successfully, now press save button
       </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-default" ng-click="$dismiss()">انصراف</button>
+      <button type="button" class="btn btn-default" ng-click="$dismiss()" >Dismiss</button>
       <button type="button" class="btn btn-primary" ng-click="vm.saveFile()">
-        <i class="fa fa-floppy-o"></i>ذخیره
+        <i class="fa fa-floppy-o"></i>Save
       </button>
     </div>
   </div>
