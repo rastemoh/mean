@@ -35,7 +35,41 @@
       },
       update: {
         method: 'PUT'
+      },
+      fetchNews: {
+        method: 'GET',
+        params: {
+          type: 'خبر'
+        },
+        isArray: true,
+        transformResponse: function (data) {
+          var array = angular.fromJson(data);
+          return array.map(function (item) {
+            var news = new News();
+            angular.merge(news, item);
+            news.setImage();
+            return news;
+          });
+        }
+      },
+      fetchNotes: {
+        method: 'GET',
+        params: {
+          type: 'یادداشت'
+        },
+        isArray: true,
+        transformResponse: function (data) {
+          var array = angular.fromJson(data);
+          return array.map(function (item) {
+            var news = new News();
+            angular.merge(news, item);
+            news.setImage();
+            return news;
+          });
+        }
+
       }
+
     });
 
     angular.extend(News.prototype, {
@@ -49,7 +83,11 @@
           angular.merge(file, this.image);
           this.image = file;
         }
-      }
+      },
+      isNote: function () {
+        return this.type === 'یادداشت';
+      },
+      typesList: ['خبر', 'یادداشت']
     });
 
     return News;

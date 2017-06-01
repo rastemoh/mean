@@ -1,7 +1,7 @@
 <section>
   <div class="page-header">
   <div class="pull-left">
-    <a class="btn btn-primary" ui-sref="news.list">بازگشت به لیست</a>
+    <a class="btn btn-primary" ui-sref="{{vm.item.isNote() ? 'news.notes' : 'news.list'}}">بازگشت به لیست</a>
   </div>
     <h1 ng-bind="vm.item.title"></h1>
   </div>

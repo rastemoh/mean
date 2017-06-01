@@ -15,12 +15,21 @@
         template: '<ui-view/>'
       })
       .state('news.list', {
-        url: '',
+        url: '/list',
         templateUrl: '/modules/news/client/views/list-news.client.view.html',
         controller: 'newsListController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'لیست اخبار و یادداشت‌ها'
+          pageTitle: 'اخبار'
+        }
+      })
+      .state('news.notes', {
+        url: '/notes',
+        templateUrl: '/modules/news/client/views/list-news.client.view.html',
+        controller: 'notesListController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'یادداشت‌ها'
         }
       })
       .state('news.view', {

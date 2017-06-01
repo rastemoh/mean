@@ -34,6 +34,11 @@ var NewsSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'File'
   },
+  type: {
+    type: String,
+    enum: ['خبر', 'یادداشت'],
+    default: 'خبر'
+  },
   keywords: [{
     type: String,
     trim: true
@@ -43,5 +48,12 @@ var NewsSchema = new Schema({
     ref: 'User'
   }
 });
+
+NewsSchema.query.byType = function(type) {
+  if (!type) {
+    return this.find();
+  }
+  return this.find({ type: type });
+};
 
 mongoose.model('News', NewsSchema);

@@ -19,6 +19,9 @@
     vm.editorOptions = {
       toolbar: 'Default'
     };
+    if (!vm.item._id) {
+      vm.item.type = 'خبر';
+    }
 
     // Remove existing Item
     function remove() {
@@ -47,11 +50,11 @@
 
       function successCallback(res) {
         $state.go('admin.news.list'); // should we send the User to the list or the updated Item's view?
-        Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Item saved successfully!' });
+        Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> خبر با موفقیت ذخیره شد!' });
       }
 
       function errorCallback(res) {
-        Notification.error({ message: res.data.message, title: '<i class="glyphicon glyphicon-remove"></i> Item save error!' });
+        Notification.error({ message: res.data.message, title: '<i class="glyphicon glyphicon-remove"></i> مشکل در ذخیره سازی خبر!' });
       }
     }
 

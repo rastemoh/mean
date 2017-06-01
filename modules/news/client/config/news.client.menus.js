@@ -9,7 +9,7 @@
 
   function menuConfig(menuService) {
     menuService.addMenuItem('topbar', {
-      title: 'اخبار',
+      title: 'خبر و یادداشت',
       state: 'news',
       type: 'dropdown',
       roles: ['*']
@@ -17,8 +17,14 @@
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'news', {
-      title: 'لیست اخبار',
+      title: 'اخبار',
       state: 'news.list',
+      roles: ['*']
+    });
+
+    menuService.addSubMenuItem('topbar', 'news', {
+      title: 'یادداشت‌ها',
+      state: 'news.notes',
       roles: ['*']
     });
   }

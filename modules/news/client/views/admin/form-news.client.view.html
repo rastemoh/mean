@@ -1,6 +1,7 @@
 <section>
   <div class="page-header">
-    <h1>{{vm.item._id ? 'ویرایش خبر' : 'خبر جدید'}}</h1>
+    <h1 ng-if="vm.item.isNote()">{{vm.item._id ? 'ویرایش یادداشت' : 'یادداشت جدید'}}</h1>
+    <h1 ng-if="!vm.item.isNote()">{{vm.item._id ? 'ویرایش خبر' : 'خبر جدید'}}</h1>
   </div>
   <div class="pull-left">
     <a ui-sref="admin.news.list" class="btn btn-primary">بازگشت به لیست</a>
@@ -9,17 +10,24 @@
     </a>
   </div>
   <div class="col-md-12">
-    <button type="button" class="btn btn-default" ng-click="vm.showModal()">آپلود تصویر اصلی خبر</button>
+    <span>نوع محتوا را مشخص کنید: </span>
+    <input type="radio" ng-model="vm.item.type" ng-value="'خبر'" id="news-radio">
+    <label for="news-radio"> خبر</label>
+    <input type="radio" ng-model="vm.item.type" ng-value="'یادداشت'" id="note-radio" style="margin-right: 15px">
+    <label for="note-radio"> یادداشت</label>
+  </div>
+  <div class="col-md-12" style="margin-top: 15px;">
+    <button type="button" class="btn btn-default" ng-click="vm.showModal()">آپلود تصویر اصلی </button>
     <img class="img-thumbnail img-responsive" ng-src="{{vm.item.image.url()}}" alt="" ng-show="vm.item.image">
   </div>
-  <div class="col-md-12">
+  <div class="col-md-12" style="margin-top: 15px;">
     <form name="vm.form.itemForm" class="form-horizontal" ng-submit="vm.save(vm.form.itemForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
-          <label class="control-label" for="title">عنوان خبر</label>
+          <label class="control-label" for="title">عنوان <span ng-bind="vm.item.type"></span></label>
           <input name="title" type="text" ng-model="vm.item.title" id="title" class="form-control" placeholder="عنوان" required autofocus>
           <div ng-messages="vm.form.itemForm.title.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">عنوان خبر اجباری است</p>
+            <p class="help-block error-text" ng-message="required">عنوان <span ng-bind="vm.item.type"></span> اجباری است</p>
           </div>
         </div>
         <div class="form-group">

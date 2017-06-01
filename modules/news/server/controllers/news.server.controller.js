@@ -68,6 +68,7 @@ exports.update = function (req, res) {
   item.content = req.body.content;
   item.summary = req.body.summary;
   item.keywords = req.body.keywords;
+  item.type = req.body.type;
   if (req.body.fileId) {
     File.findById(req.body.fileId, function (err, file) {
       if (err) {
@@ -117,7 +118,13 @@ exports.delete = function (req, res) {
  * List of news
  */
 exports.list = function (req, res) {
-  News.find().sort('-created').populate('user', 'displayName').populate('image').exec(function (err, news) {
+  var type;
+  if (req.query.type) {
+    type = req.query.type;
+  } else {
+    type = '';
+  }
+  News.find().byType(type).sort('-created').populate('user', 'displayName').populate('image').exec(function (err, news) {
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)

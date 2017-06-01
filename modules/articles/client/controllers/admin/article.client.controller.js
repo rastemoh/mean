@@ -19,6 +19,9 @@
     vm.editorOptions = {
       toolbar: 'Default'
     };
+    if (!vm.article._id) {
+      vm.article.lang = 'fa';
+    }
 
     // Remove existing Article
     function remove() {

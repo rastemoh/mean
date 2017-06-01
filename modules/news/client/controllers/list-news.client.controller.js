@@ -9,7 +9,7 @@
 
   function NewsListController(NewsService) {
     var vm = this;
-
-    vm.news = NewsService.query();
+    vm.news = NewsService.fetchNews();
+    vm.title = 'اخبار';
   }
 }());
